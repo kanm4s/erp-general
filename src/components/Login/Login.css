@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     font-family: 'Inria Sans', sans-serif;
+    overflow-x: hidden
 }
 
 /* main color */
@@ -43,13 +44,11 @@
     font-weight: bold;
 }
 
-.signup-description {
-    font-size: 1.2rem;
-    font-weight: bold;
-}
+
 
 .signup-container {
     height: 100%;
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -59,6 +58,35 @@
     max-width: 570px;
     border-radius: 36px 0 0 36px;
     padding: 5rem;
+    z-index: 5;
+    flex-grow: 2;
+    /* background: inherit; */
+    /* background-size: 1400px; */
+    
+}
+
+.signup-container-to-welcome-page {
+    transform: translateX(850px);
+    border-radius: 0 36px 36px 0;
+    transition: 1s;
+    transition-delay: 1.5s;
+}
+
+.form-container-hidden{
+    transform: translateX(100%);
+    border-radius: 0 36px 36px 0;
+    display: none;
+    transition: 1.5s;
+    transition-delay: 1s;
+    opacity: 0%;
+}
+
+
+
+.signup-description {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 3rem;
 }
 
 .signup-element {
@@ -66,13 +94,27 @@
     bottom: 2rem;
 }
 
+.signup-element-hidden {
+    transform: translateX(-60px);
+    opacity: 0%;
+    transition: 1s;
+}
+
 .d-btn {
     width: 270px;
     height: 75px;
-    background-color: transparent;
-    border: 8px solid white;
     border-radius: 70px;
-    margin-top: 3rem;
+    cursor: pointer;
+}
+
+.primary-bd {
+    border: none;
+    background-color: #5BB1AC;
+}
+
+.white-bd {
+    border: 8px solid white;
+    background-color: transparent;
 }
 
 .form-container {
@@ -80,7 +122,7 @@
     width: 100%;
     background-color: white;
     border-radius: 0 36px 36px 0;
-    padding-right: 5rem;
+    padding: 0 5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -96,10 +138,46 @@
     bottom: 2.5rem;
 }
 
+.signin-element-hidden {
+    transform: translateX(60px);
+    opacity: 0%;
+    transition: 1s;
+    transition-delay: 0.3s;
+}
+
 .input-login {
     width: 510px;
     height: 83px;
     padding-left: 2rem;
     border-radius: 15px;
     border: 3px solid #5BB1AC;
+    font-size: 1.5rem;
+}
+
+.forget-password{
+    font-size: 1.1rem;
+    color: #5BB1AC;
+    padding-right: 8px;
+    cursor: pointer;
+}
+
+.form-signup-container {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    background-color: white;
+    border-radius: 36px 0 0 36px;
+    padding: 0 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    transform: translateX(-100%);
+    display: none;
+}
+
+.form-signup-container-show {
+    transform: translateX(0%);
+    transition: 1s;
+    transition-delay: 3s;
 }
