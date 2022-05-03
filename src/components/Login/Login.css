@@ -59,6 +59,7 @@
 .header {
     font-size: 64px;
     font-weight: bold;
+    cursor: default;
 }
 
 .signup-container {
@@ -78,6 +79,7 @@
     font-size: 1.2rem;
     font-weight: bold;
     margin-bottom: 3rem;
+    cursor: default;
 }
 
 .signup-element {
@@ -98,12 +100,25 @@
 .primary-bd {
     border: none;
     background-color: #5BB1AC;
+    transition: all 0.3s ease-in-out;
+}
+
+.primary-bd:hover {
+    background-color: #3b8a86;
 }
 
 .white-bd {
     border: 8px solid white;
     background-color: transparent;
+    transition: all 0.3s ease-in-out;
 }
+
+.white-bd:hover {
+    background-color: #5BB1AC;
+    border: 8px solid rgb(206, 206, 206);
+}
+
+/* ------ log in ------*/
 
 .form-container {
     height: 100%;
@@ -126,6 +141,13 @@
     bottom: 2.5rem;
     right: 0;
     margin: 15rem 0;
+    opacity: 100%;
+    transition: all 1s ease-in-out;
+}
+
+.signin-element-hidden {
+    right: -100px;
+    opacity: 0%;
 }
 
 .input-login {
@@ -135,6 +157,12 @@
     border-radius: 15px;
     border: 3px solid #5BB1AC;
     font-size: 1.5rem;
+    transition: all 0.2s ease-in;
+}
+
+.input-login:focus {
+    outline: none;
+    transform: translateX(-5px)
 }
 
 .forget-password{
@@ -150,8 +178,59 @@
     position: relative;
     background-color: white;
     border-radius: 36px 0 0 36px;
-    padding: 0 5rem;
+    padding: 0 0 0 8.5rem;
     display: inline-block;
     transition: all 1s ease-in;
     /* transition-delay: 3s; */
+    overflow: hidden;
+}
+
+.form-signup-element{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    bottom: 2.5rem;
+    right: 0;
+    margin: 15rem 0;
+    opacity: 100%;
+    transition: all 1s ease-in-out;
+    
+}
+
+.form-signup-element-hidden{
+    right: 100px;
+    opacity: 0%;
+    /* transition-delay: 1s; */
+}
+
+.input-signup {
+    width: 510px;
+    height: 83px;
+    padding-left: 2rem;
+    border-radius: 15px;
+    border: 3px solid #5BB1AC;
+    font-size: 1.5rem;
+    transition: all 0.2s ease-in;
+    margin-bottom: 1rem;
+}
+
+.input-signup:focus {
+    outline: none;
+    transform: translateX(5px)
+}
+
+.input-error {
+    border: 6px solid #EA4949;
+}
+
+.error-message {
+    display: inline-block;
+    width: 510px;
+    color: #EA4949;
+    text-align: right;
+    position: relative;
+    bottom: 8px;
+    right: 5px;
+
 }

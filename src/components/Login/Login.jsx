@@ -12,28 +12,39 @@ export default function Login() {
             <div className="login-container">
                 <div
                     className={`all-form ${
-                        signUpPage ? "all-form-move-left" : ""
+                        !signUpPage ? "all-form-move-left" : ""
                     }`}
                 >
                     <form className={`form-signup-container`}>
-                        <div className={`signin-element`}>
+                        <div
+                            className={`form-signup-element ${
+                                !signUpPage ? "form-signup-element-hidden" : ""
+                            }`}
+                        >
                             <h1 className="text-main-color header">
                                 Sign in to ERP
                             </h1>
                             <input
-                                className="input-login"
+                                className="input-signup input-error"
                                 type="text"
                                 placeholder="ID"
                             />
+                            <small className="error-message">
+                                User is required
+                            </small>
                             <input
-                                className="input-login"
+                                className="input-signup"
                                 type="password"
                                 placeholder="Password"
                             />
+                            <input
+                                className="input-signup"
+                                type="text"
+                                placeholder="email"
+                            />
                             <button className="d-btn primary-bd">
-                                <h1 className="text-white">Log in</h1>
+                                <h1 className="text-white">Sign Up</h1>
                             </button>
-                            <p className="forget-password">Forget password</p>
                         </div>
                     </form>
 
@@ -55,7 +66,11 @@ export default function Login() {
                     </div>
 
                     <form className={`form-container`}>
-                        <div className={`signin-element`}>
+                        <div
+                            className={`signin-element ${
+                                signUpPage ? "signin-element-hidden" : ""
+                            }`}
+                        >
                             <h1 className="text-main-color header">
                                 Sign in to ERP
                             </h1>
