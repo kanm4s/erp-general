@@ -36,7 +36,7 @@ export default function MainNav() {
                     name={["Dark Mode", "GoodJob Note"]}
                 />
             </div>
-            <div className="flex gap-3 items-center h-16">
+            <div className="flex gap-3 items-center h-16 pl-10">
                 <img
                     src="https://vtubie.com/wp-content/uploads/2020/12/041220201607077946.png"
                     alt="profile photo"
