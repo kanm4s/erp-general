@@ -1,10 +1,8 @@
 export default function SubMenu(props) {
     return (
-        <div className="relative pl-3 menu-item flex items-baseline mb-2">
+        <div className="menu-item pl-14 h-11 flex items-baseline hover:bg-teal-500 hover:text-slate-100 cursor-pointer">
             {props.icons}
-            <h1 className="text-lg pl-3 text-zinc-500 cursor-pointer">
-                {props.name}
-            </h1>
+            <h1 className="text-lg pl-3">{props.name}</h1>
         </div>
     );
 }

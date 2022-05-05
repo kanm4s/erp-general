@@ -2,8 +2,8 @@ import SubMenu from "./SubMenu";
 
 export default function SectionMenu(props) {
     return (
-        <div className="section-menu mb-10">
-            <h3 className="menu-header font-bold text-2xl mb-3 text-zinc-500 cursor-default">
+        <div className="section-menu mb-10 text-zinc-500">
+            <h3 className="menu-header pl-10 font-bold text-2xl mb-3 cursor-default">
                 {props.header}
             </h3>
             {props.element.map((ele, idx) => {
