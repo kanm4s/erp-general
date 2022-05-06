@@ -5,7 +5,7 @@ import SectionMenu from "../Nav/SectionMenu";
 
 export default function MainNav() {
     return (
-        <nav className="w-72 bg-neutral-50 h-screen py-20 flex flex-col justify-between">
+        <nav className="w-72 bg-neutral-100 h-screen py-20 flex flex-col justify-between">
             <h1 className="text-5xl font-bold h-16 text-teal-600 cursor-pointer pl-10">
                 ERP
             </h1>
@@ -39,10 +39,10 @@ export default function MainNav() {
             <div className="flex gap-3 items-center h-16 pl-10">
                 <img
                     src="https://vtubie.com/wp-content/uploads/2020/12/041220201607077946.png"
-                    alt="profile photo"
+                    alt="profile"
                     className="w-12 h-12 rounded-full"
                 />
-                <div className="relative top-1">
+                <div className="relative top-1 cursor-default">
                     <h1 className="text-base font-bold text-zinc-700">
                         Kantapon
                     </h1>
