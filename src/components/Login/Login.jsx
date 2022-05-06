@@ -43,7 +43,7 @@ export default function Login() {
                                 placeholder="email"
                             />
                             <button className="d-btn primary-bd">
-                                <h1 className="text-white">Sign Up</h1>
+                                <h1 className="text-white text-2xl">Sign Up</h1>
                             </button>
                         </div>
                     </form>
@@ -60,7 +60,7 @@ export default function Login() {
                                 className="d-btn white-bd"
                                 onClick={handleSignUpPage}
                             >
-                                <h1 className="text-white">Sign up</h1>
+                                <h1 className="text-white text-2xl">Sign up</h1>
                             </button>
                         </div>
                     </div>
@@ -85,7 +85,7 @@ export default function Login() {
                                 placeholder="Password"
                             />
                             <button className="d-btn primary-bd">
-                                <h1 className="text-white">Log in</h1>
+                                <h1 className="text-white text-2xl">Log in</h1>
                             </button>
                             <p className="forget-password">Forget password</p>
                         </div>
