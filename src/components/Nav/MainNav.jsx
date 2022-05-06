@@ -5,33 +5,33 @@ import SectionMenu from "../Nav/SectionMenu";
 
 export default function MainNav() {
     return (
-        <nav className="w-72 bg-neutral-100 h-screen py-20 flex flex-col justify-between">
-            <h1 className="text-5xl font-bold h-16 text-teal-600 cursor-pointer pl-10">
+        <nav className="w-52 bg-neutral-100 h-screen py-16 flex flex-col justify-between">
+            <h1 className="text-4xl font-bold h-16 text-teal-600 cursor-pointer pl-10">
                 ERP
             </h1>
-            <div className="all-section-menu grow mt-20">
+            <div className="all-section-menu grow mt-9">
                 <SectionMenu
                     header="Quick Menu"
                     element={[
-                        <BiTask className="relative top-2 text-3xl cursor-pointer" />,
-                        <FaRegUser className="relative top-2 text-3xl cursor-pointer" />,
+                        <BiTask className="relative top-1 text-xl cursor-pointer" />,
+                        <FaRegUser className="relative top-1 text-xl cursor-pointer" />,
                     ]}
                     name={["Tasks", "Employees"]}
                 />
                 <SectionMenu
                     header="Notification"
                     element={[
-                        <HiOutlineMail className="relative top-2 text-3xl cursor-pointer" />,
-                        <BiMessageAltDetail className="relative top-2 text-3xl cursor-pointer" />,
-                        <BiBell className="relative top-2 text-3xl cursor-pointer" />,
+                        <HiOutlineMail className="relative top-1 text-xl cursor-pointer" />,
+                        <BiMessageAltDetail className="relative top-1 text-xl cursor-pointer" />,
+                        <BiBell className="relative top-1 text-xl cursor-pointer" />,
                     ]}
                     name={["MailBox", "Message", "Notification"]}
                 />
                 <SectionMenu
                     header="Other"
                     element={[
-                        <HiOutlineSun className="relative top-2 text-3xl cursor-pointer" />,
-                        <BiHeart className="relative top-2 text-3xl cursor-pointer" />,
+                        <HiOutlineSun className="relative top-1 text-xl cursor-pointer" />,
+                        <BiHeart className="relative top-1 text-xl cursor-pointer" />,
                     ]}
                     name={["Dark Mode", "GoodJob Note"]}
                 />
