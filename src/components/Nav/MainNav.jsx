@@ -5,8 +5,8 @@ import SectionMenu from "../Nav/SectionMenu";
 
 export default function MainNav() {
     return (
-        <nav className="w-48 2xl:w-52 bg-neutral-100 h-screen py-8 2xl:py-16 flex flex-col justify-between">
-            <h1 className="text-4xl font-bold h-16 text-teal-600 cursor-pointer pl-6 2xl:pl-10">
+        <nav className="relative w-48 2xl:w-52 z-20 bg-neutral-100 h-screen py-8 2xl:py-16 flex flex-col justify-between">
+            <h1 className="text-4xl font-bold h-16 text-main-color cursor-pointer pl-6 2xl:pl-10">
                 ERP
             </h1>
             <div className="all-section-menu grow mt-9">

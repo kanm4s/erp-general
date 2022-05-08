@@ -17,7 +17,7 @@ export default function ProjectProgressElement() {
                     </div>
                 </div>
             </div>
-            <span className="flex relative left-5 basis-1/5">20-12-2022</span>
+            <span className="flex justify-end basis-1/5">20-12-2022</span>
         </div>
     );
 }
