@@ -1,4 +1,5 @@
-import TaskReminder from "./Main/TaskReminder";
+import ProjectProgress from "./Main/ProjectProgress/ProjectProgress";
+import TaskReminder from "./Main/TaskReminder/TaskReminder";
 import MainNav from "./Nav/MainNav";
 import MainSidePostIt from "./SidePostIt/MainSidePostIt";
 
@@ -12,6 +13,7 @@ export default function Home() {
                 </h1>
                 <div className="flex flex-row w-full h-full px-16 2xl:px-20 gap-14 mb-5">
                     <TaskReminder />
+                    <ProjectProgress />
                 </div>
             </main>
             <MainSidePostIt />
