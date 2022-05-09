@@ -7,6 +7,12 @@ function NavContextProvider(props) {
     const [subMenuType, setSubMenuType] = useState("");
 
     const handleShowMessage = (type) => {
+        const checkTypeNow = type;
+        if (checkTypeNow === subMenuType) {
+            setShowMessage(true);
+            return;
+        }
+
         if (!showMessage) {
             setShowMessage(true);
         }
