@@ -7,15 +7,36 @@ function NavContextProvider(props) {
     const [subMenuType, setSubMenuType] = useState("");
 
     const handleShowMessage = (type) => {
-        setSubMenuType(type);
-        if (showMessage) {
-            switch (type) {
-                case "Message":
-                    setShowMessage(false);
-                    return;
-                default:
-                    return;
-            }
+        if (!showMessage) {
+            setShowMessage(true);
+        }
+        if (!subMenuType) {
+            setSubMenuType(type);
+        }
+
+        if (subMenuType) {
+            setTimeout(() => {
+                setSubMenuType(type);
+                switch (type) {
+                    case "Message":
+                        if (!showMessage) {
+                            setTimeout(() => setShowMessage(false), 200);
+                        } else {
+                            setShowMessage(false);
+                        }
+                        return;
+                    case "Notification":
+                        if (!showMessage) {
+                            setTimeout(() => setShowMessage(false), 200);
+                        } else {
+                            setShowMessage(false);
+                        }
+                        return;
+                    default:
+                        setShowMessage(true);
+                        return;
+                }
+            }, 200);
         } else {
             setShowMessage(true);
         }
