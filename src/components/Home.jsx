@@ -3,7 +3,7 @@ import TaskReminder from "./Main/TaskReminder/TaskReminder";
 import MainNav from "./Nav/MainNav";
 import MainSidePostIt from "./SidePostIt/MainSidePostIt";
 import "./Home.css";
-import Message from "./Nav/SubNav/Message";
+import SubNav from "./Nav/SubNav/SubNav";
 import { NavContextProvider } from "./contexts/NavContext";
 
 export default function Home() {
@@ -13,7 +13,7 @@ export default function Home() {
                 <MainNav />
 
                 <main className="flex h-screen flex-col grow gap-1 bg-neutral-50">
-                    <Message />
+                    <SubNav />
 
                     <h1 className="text-4xl 2xl:text-6xl text-main-color font-bold cursor-default px-14 2xl:px-20 pt-9 h-32 mt-10">
                         Work hard, Play Harder!

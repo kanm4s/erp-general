@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { NavToggle } from "../../contexts/NavContext";
-import "./Message.css";
+import "./SubNav.css";
 
-export default function Message() {
+export default function SubNav() {
     const { showMessage } = useContext(NavToggle);
     return (
         <div

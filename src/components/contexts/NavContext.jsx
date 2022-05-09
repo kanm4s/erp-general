@@ -4,13 +4,19 @@ const NavToggle = createContext();
 
 function NavContextProvider(props) {
     const [showMessage, setShowMessage] = useState(true);
+    const [subMenuType, setSubMenuType] = useState("");
 
-    const handleShowMessage = () => {
+    const handleShowMessage = (type) => {
         setShowMessage(!showMessage);
+        if (showMessage) {
+            setSubMenuType(type);
+        }
     };
 
     return (
-        <NavToggle.Provider value={{ handleShowMessage, showMessage }}>
+        <NavToggle.Provider
+            value={{ handleShowMessage, showMessage, subMenuType }}
+        >
             {props.children}
         </NavToggle.Provider>
     );
