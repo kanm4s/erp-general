@@ -1,9 +1,13 @@
 .bg-main-color {
-    background-color: #5BB1AC;
+    background-color: #5bb1ac;
+}
+
+.bg-invert-color {
+    background-color: #f5f5f5;
 }
 
 .text-main-color {
-    color: #5BB1AC;
+    color: #5bb1ac;
 }
 
 .text-invert-color {

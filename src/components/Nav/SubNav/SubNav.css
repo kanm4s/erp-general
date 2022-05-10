@@ -1,8 +1,12 @@
 .Message-hidden {
     position: absolute;
-    transform: translateX(-100%);
+    transform: translateX(-110%);
 }
 
 .Message-show {
     transform: translateX(0%);
+}
+
+.subNav-shadow {
+    box-shadow: 10px 0px 15px 3px rgba(0, 0, 0, 0.4);
 }

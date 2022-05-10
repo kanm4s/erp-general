@@ -11,7 +11,7 @@ export default function SubNav() {
         <div
             className={`w-72 2xl:w-96 z-10 ${
                 showMessage ? "Message-hidden" : "Message-show"
-            } absolute bg-main-color h-screen py-8 2xl:py-16 flex flex-col justify-between transition-all`}
+            } absolute bg-main-color h-screen 2xl:py-16 flex flex-col justify-between transition-all subNav-shadow`}
         >
             {subMenuType === "Message" && <Message />}
             {subMenuType === "Notification" && <Notification />}

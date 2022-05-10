@@ -4,25 +4,25 @@ const NavToggle = createContext();
 
 function NavContextProvider(props) {
     const [showMessage, setShowMessage] = useState(true);
-    const [subMenuType, setSubMenuType] = useState("");
+    const [checkSubMenuType, setCheckSubMenuType] = useState("");
+    const [subMenuType, setSubMenuType] = useState("Message");
 
     const handleShowMessage = (type) => {
-        const checkTypeNow = type;
-        if (checkTypeNow === subMenuType) {
+        setSubMenuType(type);
+
+        if (checkSubMenuType === subMenuType) {
             setShowMessage(true);
+            setCheckSubMenuType("");
             return;
         }
-
         if (!showMessage) {
             setShowMessage(true);
-        }
-        if (!subMenuType) {
-            setSubMenuType(type);
         }
 
         if (subMenuType) {
             setTimeout(() => {
                 setSubMenuType(type);
+                setCheckSubMenuType(type);
                 switch (type) {
                     case "Message":
                         if (!showMessage) {
