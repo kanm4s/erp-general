@@ -9,7 +9,7 @@ import { NavContextProvider } from "./contexts/NavContext";
 export default function Home() {
     return (
         <NavContextProvider>
-            <div className="flex">
+            <div className="flex overflow-hidden">
                 <MainNav />
 
                 <main className="flex h-screen flex-col grow gap-1 bg-neutral-50">

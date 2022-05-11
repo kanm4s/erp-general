@@ -2,7 +2,6 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    overflow-x: hidden
 }
 
 /* main color */
@@ -24,6 +23,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    overflow: hidden
 }
 
 .login-container {
@@ -38,6 +38,7 @@
     overflow : hidden;
     background: rgb(112,255,198);
     background: linear-gradient(45deg, rgba(112,255,198,0.3393732492997199) 0%, rgba(91,177,172,1) 27%, rgba(91,177,172,1) 79%, rgba(112,255,198,0.4542191876750701) 100%);
+    overflow: hidden
 }
 
 .all-form {
@@ -49,6 +50,7 @@
     transition: all 1s ease-in-out;
     transition-delay: 0.5s;
     position: relative;
+    overflow: hidden
 }
 
 .all-form-move-left {
@@ -71,6 +73,7 @@
     border-radius: 36px 0 0 36px;
     padding: 5rem;
     z-index: 5;
+    overflow: hidden
 }
 
 
@@ -128,6 +131,7 @@
     display: inline-block;
     position: relative;
     transition: all 1.5s ease-in-out;
+    overflow: hidden
 }
 
 
