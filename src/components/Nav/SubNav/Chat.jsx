@@ -5,7 +5,9 @@ export default function Chat() {
                 Kan
             </p>
             <div></div>
-            <div></div>
+            <div className="flex">
+                <button className="flex grow"></button>
+            </div>
         </div>
     );
 }
