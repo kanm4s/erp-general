@@ -11,14 +11,10 @@ export default function Home() {
         <NavContextProvider>
             <div className="flex overflow-hidden">
                 <MainNav />
-
-                <main className="flex h-screen flex-col grow gap-1 bg-neutral-50">
-                    <SubNav />
-
+                <main className="relative pl-48 flex h-screen flex-col grow gap-1 bg-neutral-50">
                     <h1 className="text-4xl 2xl:text-6xl text-main-color font-bold cursor-default px-14 2xl:px-20 pt-9 h-32 mt-10">
                         Work hard, Play Harder!
                     </h1>
-
                     <div className="flex flex-row w-full h-full px-16 2xl:px-20 gap-14 mb-5">
                         <TaskReminder />
                         <ProjectProgress />
