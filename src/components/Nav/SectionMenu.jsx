@@ -7,7 +7,13 @@ export default function SectionMenu(props) {
                 {props.header}
             </h3>
             {props.element.map((ele, idx) => {
-                return <SubMenu icons={ele} name={props.name[idx]} />;
+                return (
+                    <SubMenu
+                        icons={ele}
+                        name={props.name[idx].title}
+                        type={props.name[idx].type}
+                    />
+                );
             })}
         </div>
     );
