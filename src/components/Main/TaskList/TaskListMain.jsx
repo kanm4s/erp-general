@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { HiOutlineFilter } from "react-icons/hi";
 import { IoIosArrowDown } from "react-icons/io";
 
@@ -23,8 +23,8 @@ export default function TaskListMain() {
     const [tasks, setTasks] = useState(result);
     const [sortDateDesc, setSortDateDesc] = useState(true);
     const [pages, setPages] = useState([...Array(tasks.length).keys()]);
-    const [pageSelect, setPageSelect] = useState(0);
-    const [taskPageShow, setTaskPageShow] = useState(tasks[pageSelect]);
+    const [taskPageShow, setTaskPageShow] = useState(tasks[0]);
+    const [showDetail, setShowDetail] = useState("");
 
     const handleSortDateDesc = () => {
         setSortDateDesc(!sortDateDesc);
@@ -40,6 +40,14 @@ export default function TaskListMain() {
                     (a, b) => new Date(a.deadline) - new Date(b.deadline)
                 )
             );
+        }
+    };
+
+    const handleShowDetail = (id) => {
+        if (showDetail === "") {
+            setShowDetail(id);
+        } else {
+            setShowDetail("");
         }
     };
 
@@ -67,15 +75,35 @@ export default function TaskListMain() {
             </div>
 
             {/* all tasks element */}
-            {taskPageShow.map((ele, idx) => (
-                <TaskElement
-                    key={idx}
-                    title={ele.title}
-                    client={ele.client}
-                    delegateTo={ele.delegateTo}
-                    deadline={ele.deadline}
-                />
-            ))}
+            {showDetail
+                ? taskPageShow
+                      .filter((element) => {
+                          if (showDetail) {
+                              return element.id === showDetail;
+                          }
+                      })
+                      .map((ele, idx) => (
+                          <TaskElement
+                              key={idx}
+                              id={ele.id}
+                              title={ele.title}
+                              client={ele.client}
+                              delegateTo={ele.delegateTo}
+                              deadline={ele.deadline}
+                              showDetailFunction={handleShowDetail}
+                          />
+                      ))
+                : taskPageShow.map((ele, idx) => (
+                      <TaskElement
+                          key={idx}
+                          id={ele.id}
+                          title={ele.title}
+                          client={ele.client}
+                          delegateTo={ele.delegateTo}
+                          deadline={ele.deadline}
+                          showDetailFunction={handleShowDetail}
+                      />
+                  ))}
 
             {/* pagination */}
             <div className="flex justify-end p-1 mt-2 mr-1">
@@ -85,8 +113,7 @@ export default function TaskListMain() {
                             key={idx}
                             className="py-1 px-3 cursor-pointer hover:bg-slate-300 hover:text-slate-50 transition-all rounded mx-1"
                             onClick={(e) => {
-                                setPageSelect(e.target.innerHTML - 1);
-                                setTaskPageShow(tasks[pageSelect]);
+                                setTaskPageShow(tasks[e.target.innerHTML - 1]);
                             }}
                         >
                             {idx + 1}

@@ -1,9 +1,17 @@
 import { MdOutlineStickyNote2 } from "react-icons/md";
+import { motion } from "framer-motion";
 
 export default function TaskElement(props) {
-    const { title, client, delegateTo, deadline } = props;
+    const { id, title, client, delegateTo, deadline, showDetailFunction } =
+        props;
     return (
-        <div className="border-l-4 border-white hover:border-teal-500 transition-all">
+        <motion.div
+            className="border-l-4 border-white hover:border-teal-500 transition-all"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => showDetailFunction(id)}
+        >
             <div className="container relative right-1 columns-5 px-3 py-[8px] 2xl:py-[18px] border-b-2 border-slate-300 border-dashed cursor-pointer">
                 <span className="flex text-main-color">{title}</span>
                 <span className="flex text-zinc-400">{client}</span>
@@ -15,6 +23,6 @@ export default function TaskElement(props) {
                     </div>
                 </span>
             </div>
-        </div>
+        </motion.div>
     );
 }
