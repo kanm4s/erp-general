@@ -1,5 +1,5 @@
 import MainNav from "./Nav/MainNav";
-import Main from "./Main/MainPage";
+import MainPage from "./Main/MainPage";
 import MainSidePostIt from "./SidePostIt/MainSidePostIt";
 import "./Home.css";
 import { NavContextProvider } from "./contexts/NavContext";
@@ -12,7 +12,7 @@ export default function Home() {
             <div className="flex overflow-hidden">
                 <MainNav />
                 <Routes>
-                    <Route path="/" element={<Main />} />
+                    <Route path="/" element={<MainPage />} />
                     <Route path="/Tasks" element={<TasksPage />} />
                 </Routes>
                 <MainSidePostIt />

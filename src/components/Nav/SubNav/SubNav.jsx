@@ -10,7 +10,7 @@ export default function SubNav() {
     return (
         <div
             className={`relative w-72 2xl:w-96 z-10 ${
-                showMessage ? "Message-hidden" : "Message-show"
+                !showMessage ? "Message-hidden" : "Message-show"
             } absolute bg-main-color h-screen 2xl:py-16 flex flex-col justify-between transition-all subNav-shadow`}
         >
             {subMenuType === "Message" && <Message />}

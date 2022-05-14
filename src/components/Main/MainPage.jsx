@@ -1,7 +1,7 @@
 import ProjectProgress from "./ProjectProgress/ProjectProgress";
 import TaskReminder from "./TaskReminder/TaskReminder";
 
-export default function Main() {
+export default function MainPage() {
     return (
         <>
             <main className="relative px-48 flex h-screen flex-col grow gap-1 bg-neutral-50">

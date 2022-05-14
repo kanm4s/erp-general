@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 const NavToggle = createContext();
 
 function NavContextProvider(props) {
-    const [showMessage, setShowMessage] = useState(true);
+    const [showMessage, setShowMessage] = useState(false);
     const [checkSubMenuType, setCheckSubMenuType] = useState("");
     const [subMenuType, setSubMenuType] = useState("Message");
 
@@ -11,12 +11,12 @@ function NavContextProvider(props) {
         setSubMenuType(type);
 
         if (checkSubMenuType === subMenuType) {
-            setShowMessage(true);
+            setShowMessage(false);
             setCheckSubMenuType("");
             return;
         }
-        if (!showMessage) {
-            setShowMessage(true);
+        if (showMessage) {
+            setShowMessage(false);
         }
 
         if (subMenuType) {
@@ -25,32 +25,38 @@ function NavContextProvider(props) {
                 setCheckSubMenuType(type);
                 switch (type) {
                     case "Message":
-                        if (!showMessage) {
-                            setTimeout(() => setShowMessage(false), 200);
+                        if (showMessage) {
+                            setTimeout(() => setShowMessage(true), 200);
                         } else {
-                            setShowMessage(false);
+                            setShowMessage(true);
                         }
                         return;
                     case "Notification":
-                        if (!showMessage) {
-                            setTimeout(() => setShowMessage(false), 200);
+                        if (showMessage) {
+                            setTimeout(() => setShowMessage(true), 200);
                         } else {
-                            setShowMessage(false);
+                            setShowMessage(true);
                         }
                         return;
                     default:
-                        setShowMessage(true);
+                        setShowMessage(false);
                         return;
                 }
             }, 200);
         } else {
-            setShowMessage(true);
+            setShowMessage(false);
         }
     };
 
     return (
         <NavToggle.Provider
-            value={{ handleShowMessage, showMessage, subMenuType }}
+            value={{
+                handleShowMessage,
+                showMessage,
+                setShowMessage,
+                subMenuType,
+                setSubMenuType,
+            }}
         >
             {props.children}
         </NavToggle.Provider>
