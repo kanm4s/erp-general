@@ -9,6 +9,7 @@ export default function SectionMenu(props) {
             {props.element.map((ele, idx) => {
                 return (
                     <SubMenu
+                        key={idx}
                         icons={ele}
                         name={props.name[idx].title}
                         type={props.name[idx].type}
