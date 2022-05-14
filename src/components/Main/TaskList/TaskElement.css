@@ -1,0 +1,9 @@
+.border-select {
+    border-left: 3px;
+    border-color: white !important;
+    transition: all;
+}
+
+.border-select:hover {
+    border-color: #5bb1ac !important;
+}
