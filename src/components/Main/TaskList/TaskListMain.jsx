@@ -4,14 +4,15 @@ import { IoIosArrowDown } from "react-icons/io";
 
 import TaskElement from "./TaskElement";
 import tasksData from "./TaskData.json"; // tmp tasks data
+import TaskDetail from "./TaskDetail";
 
-const perChunk = 10; // items per chunk
+const perChunk = 10; // items per page
 
 const result = tasksData.reduce((resultArray, item, index) => {
     const chunkIndex = Math.floor(index / perChunk);
 
     if (!resultArray[chunkIndex]) {
-        resultArray[chunkIndex] = []; // start a new chunk
+        resultArray[chunkIndex] = []; // start a new page
     }
 
     resultArray[chunkIndex].push(item);
@@ -20,9 +21,8 @@ const result = tasksData.reduce((resultArray, item, index) => {
 }, []);
 
 export default function TaskListMain() {
-    const [tasks, setTasks] = useState(result);
+    const [tasks] = useState(result);
     const [sortDateDesc, setSortDateDesc] = useState(true);
-    const [pages, setPages] = useState([...Array(tasks.length).keys()]);
     const [taskPageShow, setTaskPageShow] = useState(tasks[0]);
     const [showDetail, setShowDetail] = useState("");
 
@@ -52,22 +52,24 @@ export default function TaskListMain() {
     };
 
     return (
-        <div className="w-full h-fit px-7 py-5 rounded-lg shadow-2xl bg-white overflow-hidden">
+        <div className="w-full h-fit min-w-[800px] max-w-[1000px] px-7 py-5 rounded-lg shadow-2xl bg-white overflow-hidden">
             {/* Header */}
-            <div className="container columns-5 px-3 py-2 2xl:py-[14px] border-b-2 border-slate-300 border-dashed cursor-default">
-                <span className="flex text-zinc-400">Project</span>
-                <span className="flex text-zinc-400">Client</span>
-                <span className="flex text-zinc-400 gap-2">Delegate</span>
-                <span className="flex text-zinc-400 gap-2">
-                    Deadline
-                    <div
-                        className="p-1 hover:bg-slate-300 hover:text-slate-50 transition-all rounded"
-                        onClick={handleSortDateDesc}
-                    >
-                        <IoIosArrowDown className="cursor-pointer" />
-                    </div>
-                </span>
-                <span className="flex text-zinc-400 justify-end">
+            <div className="container cursor-pointer flex px-3 border-b-2 border-slate-300 border-dashed">
+                <div className="container relative right-1 columns-5 py-[8px] 2xl:py-[18px]">
+                    <span className="flex text-zinc-400">Project</span>
+                    <span className="flex text-zinc-400">Client</span>
+                    <span className="flex text-zinc-400 gap-2">Delegate</span>
+                    <span className="flex text-zinc-400 gap-2">
+                        Deadline
+                        <div
+                            className="p-1 hover:bg-slate-300 hover:text-slate-50 transition-all rounded"
+                            onClick={handleSortDateDesc}
+                        >
+                            <IoIosArrowDown className="cursor-pointer" />
+                        </div>
+                    </span>
+                </div>
+                <span className="flex text-zinc-400 justify-end py-[8px] 2xl:py-[18px]">
                     <div className="p-1 hover:bg-slate-300 hover:text-slate-50 transition-all rounded">
                         <HiOutlineFilter className="cursor-pointer" />
                     </div>
@@ -80,18 +82,29 @@ export default function TaskListMain() {
                       .filter((element) => {
                           if (showDetail) {
                               return element.id === showDetail;
+                          } else {
+                              return "";
                           }
                       })
                       .map((ele, idx) => (
-                          <TaskElement
-                              key={idx}
-                              id={ele.id}
-                              title={ele.title}
-                              client={ele.client}
-                              delegateTo={ele.delegateTo}
-                              deadline={ele.deadline}
-                              showDetailFunction={handleShowDetail}
-                          />
+                          <div>
+                              <TaskElement
+                                  key={idx}
+                                  id={ele.id}
+                                  title={ele.title}
+                                  client={ele.client}
+                                  delegateTo={ele.delegateTo}
+                                  deadline={ele.deadline}
+                                  showDetailFunction={handleShowDetail}
+                              />
+                              <TaskDetail
+                                  title={ele.title}
+                                  delegateFrom={ele.delegateFrom}
+                                  delegateTo={ele.delegateTo}
+                                  delegateDate={ele.delegateDate}
+                                  deadline={ele.deadline}
+                              />
+                          </div>
                       ))
                 : taskPageShow.map((ele, idx) => (
                       <TaskElement
@@ -105,9 +118,11 @@ export default function TaskListMain() {
                       />
                   ))}
 
+            {/* {showDetail && } */}
+
             {/* pagination */}
             <div className="flex justify-end p-1 mt-2 mr-1">
-                {pages.map((ele, idx) => {
+                {[...Array(tasks.length).keys()].map((ele, idx) => {
                     return (
                         <span
                             key={idx}

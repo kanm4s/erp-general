@@ -56,6 +56,7 @@ function NavContextProvider(props) {
                 setShowMessage,
                 subMenuType,
                 setSubMenuType,
+                setCheckSubMenuType,
             }}
         >
             {props.children}

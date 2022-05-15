@@ -3,77 +3,99 @@
         "id": "1",
         "title": "Starship Trooper",
         "client": "Scanine",
+        "delegateFrom": "Prem",
         "delegateTo": "Kan",
+        "delegateDate" : "2022-07-21",
         "deadline": "2022-07-22"
     },
     {
         "id": "2",
         "title": "Starwar",
         "client": "Chommas",
+        "delegateFrom": "Prem",
         "delegateTo": "Term",
+        "delegateDate" : "2022-07-21",
         "deadline": "2022-05-21"
     },
     {
         "id": "3",
         "title": "Dune",
         "client": "VFX crazy",
+        "delegateFrom": "Prem",
         "delegateTo": "Sian",
+        "delegateDate" : "2022-07-21",
         "deadline": "2022-07-19"
     },
     {
         "id": "4",
         "title": "Star Kooper",
         "client": "Scanine",
+        "delegateFrom": "Prem",
         "delegateTo": "Kan",
+        "delegateDate" : "2022-07-21",
         "deadline": "2022-11-29"
     },
     {
         "id": "5",
         "title": "Die Hard",
         "client": "ILN",
+        "delegateFrom": "Prem",
         "delegateTo": "Mink",
+        "delegateDate" : "2022-07-21",
         "deadline": "2022-11-03"
     },
     {
         "id": "6",
         "title": "Resident evil",
         "client": "Moba",
+        "delegateFrom": "Prem",
         "delegateTo": "Web",
+        "delegateDate" : "2022-07-21",
         "deadline": "2022-11-01"
     },
     {
         "id": "7",
         "title": "Avenger",
         "client": "Scanine",
+        "delegateFrom": "Prem",
         "delegateTo": "Movie",
+        "delegateDate" : "2022-07-21",
         "deadline": "2022-12-04"
     },
     {
         "id": "8",
         "title": "SKS",
         "client": "FPSTHAILAND",
+        "delegateFrom": "Prem",
         "delegateTo": "Toro",
+        "delegateDate" : "2022-07-21",
         "deadline": "2022-09-15"
     },
     {
         "id": "9",
         "title": "MN",
         "client": "SQLMagic",
+        "delegateFrom": "Prem",
         "delegateTo": "Paul",
+        "delegateDate" : "2022-07-21",
         "deadline": "2022-12-30"
     },
     {
         "id": "10",
         "title": "Loopline",
         "client": "FuseXX",
+        "delegateFrom": "Prem",
         "delegateTo": "Kan",
+        "delegateDate" : "2022-07-21",
         "deadline": "2022-08-11"
     },
     {
         "id": "11",
         "title": "LOS",
         "client": "FFG",
+        "delegateFrom": "Prem",
         "delegateTo": "Kan",
+        "delegateDate" : "2022-07-21",
         "deadline": "2022-08-11"
     }
 ]
