@@ -3,12 +3,13 @@ import { HiOutlineFilter } from "react-icons/hi";
 import { IoIosArrowDown } from "react-icons/io";
 
 // import TaskElement from "./TaskElement";
-import tasksData from "./TaskData.json"; // tmp tasks data
+import employeeData from "./EmployeeData.json"; // tmp tasks data
+import EmployeeElement from "./EmployeeElement";
 // import TaskDetail from "./TaskDetail";
 
 const perChunk = 10; // items per page
 
-const result = tasksData.reduce((resultArray, item, index) => {
+const result = employeeData.reduce((resultArray, item, index) => {
     const chunkIndex = Math.floor(index / perChunk);
 
     if (!resultArray[chunkIndex]) {
@@ -24,7 +25,7 @@ export default function TaskListMain() {
     const [employees] = useState(result);
     const [sortDateDesc, setSortDateDesc] = useState(true);
     const [taskPageShow, setTaskPageShow] = useState(employees[0]);
-    const [showDetail, setShowDetail] = useState("");
+    const [showSentEmail, setShowSentEmail] = useState("");
 
     const handleSortDateDesc = () => {
         setSortDateDesc(!sortDateDesc);
@@ -44,10 +45,10 @@ export default function TaskListMain() {
     };
 
     const handleShowDetail = (id) => {
-        if (showDetail === "") {
-            setShowDetail(id);
+        if (showSentEmail === "") {
+            setShowSentEmail(id);
         } else {
-            setShowDetail("");
+            setShowSentEmail("");
         }
     };
 
@@ -55,19 +56,10 @@ export default function TaskListMain() {
         <div className="w-full h-fit min-w-[800px] max-w-[1000px] px-7 py-5 rounded-lg shadow-2xl bg-white overflow-hidden">
             {/* Header */}
             <div className="container cursor-pointer flex px-3 border-b-2 border-slate-300 border-dashed">
-                <div className="container relative right-1 columns-5 py-[8px] 2xl:py-[18px]">
+                <div className="container relative right-1 columns-4 py-[8px] 2xl:py-[18px]">
                     <span className="flex text-zinc-400">Project</span>
                     <span className="flex text-zinc-400">Client</span>
                     <span className="flex text-zinc-400 gap-2">Delegate</span>
-                    <span className="flex text-zinc-400 gap-2">
-                        Deadline
-                        <div
-                            className="p-1 hover:bg-slate-300 hover:text-slate-50 transition-all rounded"
-                            onClick={handleSortDateDesc}
-                        >
-                            <IoIosArrowDown className="cursor-pointer" />
-                        </div>
-                    </span>
                 </div>
                 <span className="flex text-zinc-400 justify-end py-[8px] 2xl:py-[18px]">
                     <div className="p-1 hover:bg-slate-300 hover:text-slate-50 transition-all rounded">
@@ -77,53 +69,54 @@ export default function TaskListMain() {
             </div>
 
             {/* all employees element */}
-            {/* {showDetail
+            {showSentEmail
                 ? taskPageShow
                       .filter((element) => {
-                          if (showDetail) {
-                              return element.id === showDetail;
+                          if (showSentEmail) {
+                              return element.id === showSentEmail;
                           } else {
                               return "";
                           }
                       })
                       .map((ele, idx) => (
                           <div>
-                              <TaskElement
+                              <EmployeeElement
                                   key={idx}
                                   id={ele.id}
-                                  title={ele.title}
-                                  client={ele.client}
-                                  delegateTo={ele.delegateTo}
-                                  deadline={ele.deadline}
+                                  firstName={ele.firstName}
+                                  lastName={ele.lastName}
+                                  position={ele.position}
+                                  phoneNumber={ele.phoneNumber}
+                                  email={ele.email}
                                   showDetailFunction={handleShowDetail}
                               />
-                              <TaskDetail
+                              {/* <TaskDetail
                                   title={ele.title}
                                   delegateFrom={ele.delegateFrom}
                                   delegateTo={ele.delegateTo}
                                   delegateDate={ele.delegateDate}
                                   deadline={ele.deadline}
                                   clientBrief={ele.clientBrief}
-                              />
+                              /> */}
                           </div>
                       ))
                 : taskPageShow.map((ele, idx) => (
-                      <TaskElement
+                      <EmployeeElement
                           key={idx}
                           id={ele.id}
-                          title={ele.title}
-                          client={ele.client}
-                          delegateTo={ele.delegateTo}
-                          deadline={ele.deadline}
+                          firstName={ele.firstName}
+                          lastName={ele.lastName}
+                          position={ele.position}
+                          phoneNumber={ele.phoneNumber}
+                          email={ele.email}
                           showDetailFunction={handleShowDetail}
                       />
-                  ))} */}
-
+                  ))}
             {/* {showDetail && } */}
 
             {/* pagination */}
             <div className="flex justify-end p-1 mt-2 mr-1">
-                {/* {[...Array(employees.length).keys()].map((ele, idx) => {
+                {[...Array(employees.length).keys()].map((ele, idx) => {
                     return (
                         <span
                             key={idx}
@@ -137,7 +130,7 @@ export default function TaskListMain() {
                             {idx + 1}
                         </span>
                     );
-                })} */}
+                })}
             </div>
         </div>
     );
