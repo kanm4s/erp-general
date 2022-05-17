@@ -1,7 +1,14 @@
 import { motion } from "framer-motion";
 
 export default function TaskDetail(props) {
-    const { title, delegateFrom, delegateTo, delegateDate, deadline } = props;
+    const {
+        title,
+        delegateFrom,
+        delegateTo,
+        delegateDate,
+        deadline,
+        clientBrief,
+    } = props;
     return (
         <motion.div
             initial={{ opacity: 0 }}
@@ -36,6 +43,11 @@ export default function TaskDetail(props) {
             </div>
             <div className="flex flex-col gap-3 basis-1/2">
                 <h1 className="text-main-color font-bold">Brief from client</h1>
+                <div className="flex gap-4">
+                    <span>Brief version: {clientBrief.version}</span>
+                    <span>{clientBrief.lastUpdate}</span>
+                </div>
+                <p className="h-full">{clientBrief.content}</p>
             </div>
         </motion.div>
     );

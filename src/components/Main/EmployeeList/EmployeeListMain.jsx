@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { HiOutlineFilter } from "react-icons/hi";
 import { IoIosArrowDown } from "react-icons/io";
 
-import TaskElement from "./TaskElement";
+// import TaskElement from "./TaskElement";
 import tasksData from "./TaskData.json"; // tmp tasks data
-import TaskDetail from "./TaskDetail";
+// import TaskDetail from "./TaskDetail";
 
 const perChunk = 10; // items per page
 
@@ -21,9 +21,9 @@ const result = tasksData.reduce((resultArray, item, index) => {
 }, []);
 
 export default function TaskListMain() {
-    const [tasks] = useState(result);
+    const [employees] = useState(result);
     const [sortDateDesc, setSortDateDesc] = useState(true);
-    const [taskPageShow, setTaskPageShow] = useState(tasks[0]);
+    const [taskPageShow, setTaskPageShow] = useState(employees[0]);
     const [showDetail, setShowDetail] = useState("");
 
     const handleSortDateDesc = () => {
@@ -76,8 +76,8 @@ export default function TaskListMain() {
                 </span>
             </div>
 
-            {/* all tasks element */}
-            {showDetail
+            {/* all employees element */}
+            {/* {showDetail
                 ? taskPageShow
                       .filter((element) => {
                           if (showDetail) {
@@ -117,25 +117,27 @@ export default function TaskListMain() {
                           deadline={ele.deadline}
                           showDetailFunction={handleShowDetail}
                       />
-                  ))}
+                  ))} */}
 
             {/* {showDetail && } */}
 
             {/* pagination */}
             <div className="flex justify-end p-1 mt-2 mr-1">
-                {[...Array(tasks.length).keys()].map((ele, idx) => {
+                {/* {[...Array(employees.length).keys()].map((ele, idx) => {
                     return (
                         <span
                             key={idx}
                             className="py-1 px-3 cursor-pointer hover:bg-slate-300 hover:text-slate-50 transition-all rounded mx-1"
                             onClick={(e) => {
-                                setTaskPageShow(tasks[e.target.innerHTML - 1]);
+                                setTaskPageShow(
+                                    employees[e.target.innerHTML - 1]
+                                );
                             }}
                         >
                             {idx + 1}
                         </span>
                     );
-                })}
+                })} */}
             </div>
         </div>
     );
