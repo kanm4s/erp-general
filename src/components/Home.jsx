@@ -8,19 +8,19 @@ import TasksPage from "./Main/TasksPage";
 import EmployeesPage from "./Main/EmployeesPage";
 
 export default function Home() {
-    return (
-        <NavContextProvider>
-            <div className="flex overflow-hidden">
-                <MainNav />
+  return (
+    <NavContextProvider>
+      <div className="flex overflow-hidden">
+        <MainNav />
 
-                <Routes>
-                    <Route path="/" element={<MainPage />} />
-                    <Route path="/Tasks" element={<TasksPage />} />
-                    <Route path="/Employees" element={<EmployeesPage />} />
-                </Routes>
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/Tasks" element={<TasksPage />} />
+          <Route path="/Employees" element={<EmployeesPage />} />
+        </Routes>
 
-                <MainSidePostIt />
-            </div>
-        </NavContextProvider>
-    );
+        <MainSidePostIt />
+      </div>
+    </NavContextProvider>
+  );
 }
