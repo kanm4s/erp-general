@@ -23,6 +23,7 @@ export default function Model_task(props) {
       aria-labelledby="modal-title"
       role="dialog"
       aria-modal="true"
+      onClick={handleShowModal}
     >
       <div className="fixed inset-0 bg-gray-500 bg-opacity-40 transition-opacity"></div>
 
