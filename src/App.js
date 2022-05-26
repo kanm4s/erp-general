@@ -1,31 +1,33 @@
 import "./App.css";
 import Home from "./components/Home";
 import Login from "./components/Login/Login";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
-import { getAccessToken } from "./service/localStorage";
+import { useContext } from "react";
+import { AuthContext } from "./contexts/AuthContext";
+import { MainPageContext } from "./contexts/PageContext";
 function App() {
   // const [auth,setAuth] = useState(false)
-  let navigate = useNavigate();
-
-  useEffect(() => {
-    const token = getAccessToken();
-    if (token) {
-      navigate("/");
-    } else {
-      navigate("/login");
-    }
-  }, []);
+  const { isAuthenticated } = useContext(AuthContext);
 
   return (
     <AnimatePresence>
-      <Routes>
-        {/* <Route path="/" element={<Navigate to="/login" />}> */}
-        <Route path="/login" element={<Login />} />
-        <Route path="/*" element={<Home />} />
-        {/* </Route> */}
-      </Routes>
+      <MainPageContext>
+        <Routes>
+          {/* <Route path="/" element={<Navigate to="/login" />}> */}
+          {isAuthenticated ? (
+            <>
+              <Route path="/*" element={<Home />} />
+            </>
+          ) : (
+            <>
+              <Route path="/login" element={<Login />} />
+              <Route path="*" element={<Navigate to="/login" />} />
+            </>
+          )}
+          {/* </Route> */}
+        </Routes>
+      </MainPageContext>
     </AnimatePresence>
   );
 }

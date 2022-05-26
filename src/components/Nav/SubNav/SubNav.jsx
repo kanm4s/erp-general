@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { NavToggle } from "../../contexts/NavContext";
+import { NavToggle } from "../../../contexts/NavContext";
 import Message from "./Message";
 import Notification from "./Notification";
 import "./SubNav.css";

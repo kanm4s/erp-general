@@ -1,19 +1,24 @@
 import { useState } from "react";
 import { login } from "../../stores/auth";
 import "./Login.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [signUpPage, setSignUpPage] = useState(false);
   const [idLogin, setIdLogin] = useState("");
   const [passwordLogin, setPasswordLogin] = useState("");
-
   const handleSignUpPage = () => {
     setSignUpPage(!signUpPage);
   };
 
+  let navigate = useNavigate();
+
   const handleLogin = (e) => {
     e.preventDefault();
-    login(idLogin, passwordLogin);
+    const token = login(idLogin, passwordLogin);
+    if (token) {
+      navigate("/");
+    }
   };
   return (
     <div className="Login-master-container">

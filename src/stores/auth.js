@@ -1,4 +1,5 @@
 import axios from "axios";
+
 import { setAccessToken } from "../service/localStorage";
 
 export const login = async (userName, password) => {
@@ -8,6 +9,7 @@ export const login = async (userName, password) => {
       password,
     });
     setAccessToken(res.data.token);
+    return res.data.token;
   } catch (err) {
     console.log(err);
   }
