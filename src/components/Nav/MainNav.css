@@ -1,7 +1,14 @@
 .bg-main-nav {
-    background-color: #f5f5f5;
+  background-color: #f5f5f5;
 }
 
 .bg-main-nav:hover {
-    background-color: #5BB1AC;
+  background-color: #5bb1ac;
+}
+.bg-main-nav-reverse {
+  background-color: #5bb1ac;
+}
+
+.bg-main-nav-reverse:hover {
+  background-color: #f5f5f5;
 }

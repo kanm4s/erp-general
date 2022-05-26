@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { login } from "../../stores/auth";
+import { useContext, useState } from "react";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthContext";
 
 export default function Login() {
   const [signUpPage, setSignUpPage] = useState(false);
@@ -11,14 +11,12 @@ export default function Login() {
     setSignUpPage(!signUpPage);
   };
 
-  let navigate = useNavigate();
+  const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    const token = login(idLogin, passwordLogin);
-    if (token) {
-      navigate("/");
-    }
+    await login(idLogin, passwordLogin);
   };
   return (
     <div className="Login-master-container">

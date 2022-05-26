@@ -1,32 +1,21 @@
 import "./App.css";
-import Home from "./components/Home";
-import Login from "./components/Login/Login";
-import { Routes, Route, Navigate } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
-import { useContext } from "react";
-import { AuthContext } from "./contexts/AuthContext";
 import { MainPageContext } from "./contexts/PageContext";
+import Router from "./route/Router";
+import { NavContextProvider } from "./contexts/NavContext";
+import MainSidePostIt from "./components/SidePostIt/MainSidePostIt";
 function App() {
   // const [auth,setAuth] = useState(false)
-  const { isAuthenticated } = useContext(AuthContext);
 
   return (
     <AnimatePresence>
       <MainPageContext>
-        <Routes>
-          {/* <Route path="/" element={<Navigate to="/login" />}> */}
-          {isAuthenticated ? (
-            <>
-              <Route path="/*" element={<Home />} />
-            </>
-          ) : (
-            <>
-              <Route path="/login" element={<Login />} />
-              <Route path="*" element={<Navigate to="/login" />} />
-            </>
-          )}
-          {/* </Route> */}
-        </Routes>
+        <NavContextProvider>
+          <div className="flex overflow-hidden">
+            <Router />
+            <MainSidePostIt />
+          </div>
+        </NavContextProvider>
       </MainPageContext>
     </AnimatePresence>
   );
