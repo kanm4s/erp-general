@@ -7,7 +7,7 @@ import { Outlet } from "react-router-dom";
 export default function MainPage() {
   return (
     <motion.main
-      className="relative px-5 flex h-screen flex-col grow gap-1 bg-neutral-50"
+      className="relative flex h-screen flex-col grow gap-1 bg-neutral-50"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -21,7 +21,6 @@ export default function MainPage() {
         </ModalTaskContext>
         <ProjectProgress />
       </div>
-      <Outlet />
     </motion.main>
   );
 }
