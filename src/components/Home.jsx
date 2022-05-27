@@ -13,15 +13,13 @@ export default function Home() {
 
   return (
     <NavContextProvider>
-      <div className="flex overflow-hidden">
-        <MainNav />
+      <MainNav />
 
-        {page === "MAIN" && <MainPage />}
-        {page === "Tasks" && <TasksPage />}
-        {page === "Employees" && <EmployeesPage />}
+      {page === "MAIN" && <MainPage />}
+      {page === "Tasks" && <TasksPage />}
+      {page === "Employees" && <EmployeesPage />}
 
-        <MainSidePostIt />
-      </div>
+      <MainSidePostIt />
     </NavContextProvider>
   );
 }

@@ -13,7 +13,6 @@ function App() {
         <NavContextProvider>
           <div className="flex overflow-hidden">
             <Router />
-            <MainSidePostIt />
           </div>
         </NavContextProvider>
       </MainPageContext>

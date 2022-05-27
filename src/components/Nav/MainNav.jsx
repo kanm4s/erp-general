@@ -59,7 +59,7 @@ export default function MainNav() {
         </div>
         <div className="relative">
           {showMenuProfile ? (
-            <div className="absolute  bottom-1 w-full">
+            <div className="absolute  bottom-1 w-full cursor-pointer">
               <h2 className="px-6 py-1 text-zinc-500 hover:text-zinc-100 transition ease-in-out bg-main-nav">
                 Edit profile
               </h2>

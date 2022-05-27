@@ -2,12 +2,11 @@ import ProjectProgress from "./ProjectProgress/ProjectProgress";
 import TaskReminder from "./TaskReminder/TaskReminder";
 import { motion } from "framer-motion";
 import { ModalTaskContext } from "../../contexts/ModalContext";
-import { Outlet } from "react-router-dom";
 
 export default function MainPage() {
   return (
     <motion.main
-      className="relative flex h-screen flex-col grow gap-1 bg-neutral-50"
+      className="relative px-56 flex h-screen flex-col grow gap-1 bg-neutral-50"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
