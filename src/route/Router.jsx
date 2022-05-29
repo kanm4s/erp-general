@@ -11,6 +11,7 @@ export default function Router() {
       {user ? (
         <>
           <Route path="/" element={<Home />} />
+          <Route path="*" element={<Navigate to="/" />} />
         </>
       ) : (
         <>

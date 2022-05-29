@@ -1,22 +1,23 @@
-import { useState } from "react";
+import "./MainNav.css";
+import { useContext, useState } from "react";
 import { BiTask, BiMessageAltDetail, BiBell, BiHeart } from "react-icons/bi";
 import { FaRegUser } from "react-icons/fa";
 import { HiOutlineMail, HiOutlineSun } from "react-icons/hi";
-import { Outlet, useNavigate } from "react-router-dom";
 import SectionMenu from "../Nav/SectionMenu";
 import SubNav from "./SubNav/SubNav";
-import "./MainNav.css";
+import { AuthContext } from "../../contexts/AuthContext";
+import { PageSelect } from "../../contexts/PageContext";
 
 export default function MainNav() {
-  const navigate = useNavigate();
   const [showMenuProfile, setShowMenuProfile] = useState(false);
-
+  const { user } = useContext(AuthContext);
+  const { handleShowModal } = useContext(PageSelect);
   return (
     <div className="absolute flex">
       <nav className="relative w-48 2xl:w-52 z-20 bg-neutral-100 h-screen py-8 2xl:py-16 flex flex-col justify-between">
         <h1
           className="text-4xl font-bold h-16 text-main-color cursor-pointer pl-6 2xl:pl-10"
-          onClick={() => navigate("/")}
+          onClick={() => handleShowModal("MAIN")}
         >
           ERP
         </h1>
@@ -28,7 +29,10 @@ export default function MainNav() {
               <FaRegUser className="relative top-1 text-xl cursor-pointer" />,
             ]}
             name={[
-              { title: "Tasks", type: "navigate" },
+              {
+                title: user.position === "Manager" ? "Projects" : "Tasks",
+                type: "navigate",
+              },
               { title: "Employees", type: "navigate" },
             ]}
           />
@@ -87,7 +91,6 @@ export default function MainNav() {
         </div>
       </nav>
       <SubNav />
-      <Outlet />
     </div>
   );
 }

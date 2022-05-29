@@ -7,19 +7,24 @@ import EmployeesPage from "./Main/EmployeesPage";
 import { NavContextProvider } from "../contexts/NavContext";
 import { useContext } from "react";
 import { PageSelect } from "../contexts/PageContext";
+import ProjectPage from "./Main/ProjectPage";
+import { ProjectContextProvider } from "../contexts/ProjectContext";
 
 export default function Home() {
   const { page } = useContext(PageSelect);
 
   return (
     <NavContextProvider>
-      <MainNav />
+      <ProjectContextProvider>
+        <MainNav />
 
-      {page === "MAIN" && <MainPage />}
-      {page === "Tasks" && <TasksPage />}
-      {page === "Employees" && <EmployeesPage />}
+        {page === "MAIN" && <MainPage />}
+        {page === "Projects" && <ProjectPage />}
+        {page === "Tasks" && <TasksPage />}
+        {page === "Employees" && <EmployeesPage />}
 
-      <MainSidePostIt />
+        <MainSidePostIt />
+      </ProjectContextProvider>
     </NavContextProvider>
   );
 }
