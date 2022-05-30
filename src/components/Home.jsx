@@ -9,6 +9,7 @@ import { useContext } from "react";
 import { PageSelect } from "../contexts/PageContext";
 import ProjectPage from "./Main/ProjectPage";
 import { ProjectContextProvider } from "../contexts/ProjectContext";
+import { Outlet } from "react-router-dom";
 
 export default function Home() {
   const { page } = useContext(PageSelect);
@@ -18,10 +19,7 @@ export default function Home() {
       <ProjectContextProvider>
         <MainNav />
 
-        {page === "MAIN" && <MainPage />}
-        {page === "Projects" && <ProjectPage />}
-        {page === "Tasks" && <TasksPage />}
-        {page === "Employees" && <EmployeesPage />}
+        <Outlet />
 
         <MainSidePostIt />
       </ProjectContextProvider>

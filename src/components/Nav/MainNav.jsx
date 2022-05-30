@@ -7,6 +7,7 @@ import SectionMenu from "../Nav/SectionMenu";
 import SubNav from "./SubNav/SubNav";
 import { AuthContext } from "../../contexts/AuthContext";
 import { PageSelect } from "../../contexts/PageContext";
+import { Outlet } from "react-router-dom";
 
 export default function MainNav() {
   const [showMenuProfile, setShowMenuProfile] = useState(false);

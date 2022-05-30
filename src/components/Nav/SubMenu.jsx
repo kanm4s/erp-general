@@ -10,6 +10,7 @@ export default function SubMenu(props) {
     useContext(NavToggle);
 
   const { handleShowModal } = useContext(PageSelect);
+  const navigate = useNavigate();
   return (
     <div
       className="menu-item pl-8 2xl:pl-14 h-7 flex items-baseline transition ease-in-out bg-main-nav hover:text-slate-100 cursor-pointer"
@@ -17,6 +18,7 @@ export default function SubMenu(props) {
         props.type === "subMenu"
           ? () => handleShowMessage(props.name)
           : () => {
+              navigate(props.name);
               handleShowModal(props.name);
               setShowMessage(false);
               setCheckSubMenuType("");
