@@ -6,6 +6,7 @@ import {
   removeAccessToken,
   setAccessToken,
 } from "../service/localStorage";
+import { getUser, loginApi, signUpApi } from "../api/Auth";
 
 const AuthContext = createContext();
 
@@ -18,7 +19,7 @@ const AuthContextProvider = (props) => {
       try {
         const token = getAccessToken();
         if (token) {
-          const resMe = await axios.get("/users");
+          const resMe = await getUser();
           setUser(resMe.data.user);
         }
       } catch (err) {
@@ -31,13 +32,33 @@ const AuthContextProvider = (props) => {
 
   const login = async (userName, password) => {
     try {
-      const res = await axios.post("/auths/login", {
+      const res = await loginApi(userName, password);
+      setAccessToken(res.data.token);
+      const resMe = await getUser();
+      setUser(resMe.data.user);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const signUp = async (
+    firstName,
+    lastName,
+    userName,
+    password,
+    confirmPassword,
+    phoneNumber
+  ) => {
+    try {
+      const res = await signUpApi(
+        firstName,
+        lastName,
         userName,
         password,
-      });
-      setAccessToken(res.data.token);
-      const resMe = await axios.get("/user");
-      setUser(resMe.data.user);
+        confirmPassword,
+        phoneNumber
+      );
+      console.log(res.data.message);
     } catch (err) {
       console.log(err);
     }
@@ -49,7 +70,7 @@ const AuthContextProvider = (props) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, setUser, login, logout }}>
+    <AuthContext.Provider value={{ user, setUser, login, logout, signUp }}>
       {props.children}
     </AuthContext.Provider>
   );

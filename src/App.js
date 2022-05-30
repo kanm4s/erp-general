@@ -11,9 +11,7 @@ function App() {
     <AnimatePresence>
       <MainPageContext>
         <NavContextProvider>
-          <div className="flex overflow-hidden">
-            <Router />
-          </div>
+          <Router />
         </NavContextProvider>
       </MainPageContext>
     </AnimatePresence>

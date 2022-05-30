@@ -17,11 +17,13 @@ export default function Home() {
   return (
     <NavContextProvider>
       <ProjectContextProvider>
-        <MainNav />
+        <div className="flex overflow-hidden">
+          <MainNav />
 
-        <Outlet />
+          <Outlet />
 
-        <MainSidePostIt />
+          <MainSidePostIt />
+        </div>
       </ProjectContextProvider>
     </NavContextProvider>
   );
