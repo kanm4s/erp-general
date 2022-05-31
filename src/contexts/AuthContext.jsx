@@ -47,7 +47,8 @@ const AuthContextProvider = (props) => {
     userName,
     password,
     confirmPassword,
-    phoneNumber
+    phoneNumber,
+    email
   ) => {
     try {
       const res = await signUpApi(
@@ -56,11 +57,12 @@ const AuthContextProvider = (props) => {
         userName,
         password,
         confirmPassword,
-        phoneNumber
+        phoneNumber,
+        email
       );
       console.log(res.data.message);
     } catch (err) {
-      console.log(err);
+      console.log(err.data.message);
     }
   };
 

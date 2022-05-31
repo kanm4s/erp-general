@@ -11,6 +11,7 @@ export default function Signup({ animate, setSignUpPage }) {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [email, setEmail] = useState("");
   const [error, setError] = useState({});
 
   const { signUp } = useContext(AuthContext);
@@ -38,6 +39,9 @@ export default function Signup({ animate, setSignUpPage }) {
     if (validator.isEmpty(phoneNumber + "")) {
       errorTmp.phoneNumber = "Phone number is required";
     }
+    if (validator.isEmpty(email + "")) {
+      errorTmp.email = "Emails required";
+    }
 
     if (Object.keys(errorTmp).length > 0) {
       setError(errorTmp);
@@ -51,6 +55,7 @@ export default function Signup({ animate, setSignUpPage }) {
       setConfirmPassword("");
       setPhoneNumber("");
       setSignUpPage();
+      setEmail("");
     }
 
     await signUp(
@@ -59,7 +64,8 @@ export default function Signup({ animate, setSignUpPage }) {
       userName,
       password,
       confirmPassword,
-      phoneNumber
+      phoneNumber,
+      email
     );
   };
 
@@ -118,6 +124,14 @@ export default function Signup({ animate, setSignUpPage }) {
             setPhoneNumber(e.target.value);
           }}
           error={error?.phoneNumber}
+        />
+        <Input
+          name="Email"
+          value={email}
+          onChange={(e) => {
+            setEmail(e.target.value);
+          }}
+          error={error?.email}
         />
         <button className="d-btn primary-bd">
           <h1 className="text-white text-2xl">Sign Up</h1>

@@ -2,11 +2,13 @@ import React, { useContext, useState } from "react";
 import { HiOutlineFilter } from "react-icons/hi";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoCreateOutline } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 
 import { ProjectContext } from "../../../contexts/ProjectContext";
 
 export default function ProjectListMain() {
   const { project } = useContext(ProjectContext);
+  const navigate = useNavigate();
 
   const perChunk = 10; // items per page
 
@@ -42,6 +44,10 @@ export default function ProjectListMain() {
         )
       );
     }
+  };
+
+  const handleCreateProject = () => {
+    navigate("/Projects/create");
   };
 
   const handleShowDetail = (id) => {
@@ -124,7 +130,10 @@ export default function ProjectListMain() {
 
       {/* pagination */}
       <div className="flex justify-between items-center p-1 mt-2 mr-1">
-        <IoCreateOutline className="text-lg cursor-pointer" />
+        <IoCreateOutline
+          className="text-lg cursor-pointer"
+          onClick={handleCreateProject}
+        />
         {[...Array(projects.length).keys()].map((ele, idx) => {
           return (
             <span

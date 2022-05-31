@@ -1,426 +1,415 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 /* main color */
 
 .main-bg-color {
-    background-color: #5bb1ac;
+  background-color: #5bb1ac;
 }
 
 .text-white {
-    color: #ffffff;
+  color: #ffffff;
 }
 
 .text-main-color {
-    color: #5bb1ac;
+  color: #5bb1ac;
 }
 
 .Login-master-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .login-container {
-    min-width: 400px;
-    width: 1400px;
-    max-width: 1400px;
-    height: 900px;
-    box-shadow: 0px 6px 21px 4px rgba(0, 0, 0, 0.2);
-    display: inline-block;
-    border-radius: 36px;
-    white-space: nowrap;
-    overflow: hidden;
-    background: rgb(112, 255, 198);
-    background: linear-gradient(
-        45deg,
-        rgba(112, 255, 198, 0.3393732492997199) 0%,
-        rgba(91, 177, 172, 1) 27%,
-        rgba(91, 177, 172, 1) 79%,
-        rgba(112, 255, 198, 0.4542191876750701) 100%
-    );
-    overflow: hidden;
+  min-width: 400px;
+  width: 1400px;
+  max-width: 1400px;
+  height: 900px;
+  box-shadow: 0px 6px 21px 4px rgba(0, 0, 0, 0.2);
+  display: inline-block;
+  border-radius: 36px;
+  white-space: nowrap;
+  overflow: hidden;
+  background: rgb(112, 255, 198);
+  background: linear-gradient(
+    45deg,
+    rgba(112, 255, 198, 0.3393732492997199) 0%,
+    rgba(91, 177, 172, 1) 27%,
+    rgba(91, 177, 172, 1) 79%,
+    rgba(112, 255, 198, 0.4542191876750701) 100%
+  );
+  overflow: hidden;
 }
 
 .all-form {
-    display: inline-block;
-    height: 900px;
-    white-space: nowrap;
-    overflow: hidden;
-    left: 0px;
-    transition: all 1s ease-in-out;
-    transition-delay: 0.5s;
-    position: relative;
-    overflow: hidden;
+  display: inline-block;
+  height: 900px;
+  white-space: nowrap;
+  overflow: hidden;
+  left: 0px;
+  transition: all 1s ease-in-out;
+  transition-delay: 0.5s;
+  position: relative;
+  overflow: hidden;
 }
 
 .all-form-move-left {
-    left: -820px;
+  left: -820px;
 }
 
 .header {
-    font-size: 56px;
-    font-weight: bold;
-    cursor: default;
+  font-size: 56px;
+  font-weight: bold;
+  cursor: default;
 }
 
 .signup-container {
-    height: 900px;
-    position: relative;
-    display: inline-block;
-    min-width: 400px;
-    width: 580px;
-    max-width: 580px;
-    border-radius: 36px 0 0 36px;
-    padding: 5rem;
-    z-index: 5;
-    overflow: hidden;
+  height: 900px;
+  position: relative;
+  display: inline-block;
+  min-width: 400px;
+  width: 580px;
+  max-width: 580px;
+  border-radius: 36px 0 0 36px;
+  padding: 5rem;
+  z-index: 5;
+  overflow: hidden;
 }
 
 .signup-description {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 3rem;
-    cursor: default;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 3rem;
+  cursor: default;
 }
 
 .signup-element {
-    position: relative;
-    bottom: 2rem;
-    margin: 13rem 0;
-    white-space: normal;
+  position: relative;
+  bottom: 2rem;
+  margin: 13rem 0;
+  white-space: normal;
 }
 
 .d-btn {
-    width: 270px;
-    height: 75px;
-    border-radius: 70px;
-    cursor: pointer;
+  width: 270px;
+  height: 75px;
+  border-radius: 70px;
+  cursor: pointer;
 }
 
 .primary-bd {
-    border: none;
-    background-color: #5bb1ac;
-    transition: all 0.3s ease-in-out;
+  border: none;
+  background-color: #5bb1ac;
+  transition: all 0.3s ease-in-out;
 }
 
 .primary-bd:hover {
-    background-color: #3b8a86;
+  background-color: #3b8a86;
 }
 
 .white-bd {
-    border: 8px solid white;
-    background-color: transparent;
-    transition: all 0.3s ease-in-out;
+  border: 8px solid white;
+  background-color: transparent;
+  transition: all 0.3s ease-in-out;
 }
 
 .white-bd:hover {
-    background-color: #5bb1ac;
-    border: 8px solid rgb(206, 206, 206);
+  background-color: #5bb1ac;
+  border: 8px solid rgb(206, 206, 206);
 }
 
 /* ------ log in ------*/
 
 .form-container {
-    height: 100%;
-    width: 820px;
+  height: 100%;
+  width: 820px;
+  background-color: white;
+  border-radius: 0 36px 36px 0;
+  padding: 0 5rem;
+  display: inline-block;
+  position: relative;
+  transition: all 1.5s ease-in-out;
+  overflow: hidden;
+}
+
+.signin-element {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+  position: relative;
+  bottom: 2.5rem;
+  right: 0;
+  margin: 15rem 0;
+  opacity: 100%;
+  transition: all 1s ease-in-out;
+}
+
+.signin-element-hidden {
+  right: -100px;
+  opacity: 0%;
+}
+
+.input-login {
+  width: 510px;
+  height: 83px;
+  padding-left: 2rem;
+  border-radius: 15px;
+  border: 3px solid #5bb1ac;
+  font-size: 1.5rem;
+  transition: all 0.2s ease-in;
+}
+
+.input-login:focus {
+  outline: none;
+  transform: translateX(-5px);
+}
+
+.forget-password {
+  font-size: 1.1rem;
+  color: #5bb1ac;
+  padding-right: 8px;
+  cursor: pointer;
+}
+
+.form-signup-container {
+  height: 100%;
+  width: 820px;
+  position: relative;
+  background-color: white;
+  border-radius: 36px 0 0 36px;
+  padding: 0 0 0 8.5rem;
+  display: inline-block;
+  transition: all 1s ease-in;
+  /* transition-delay: 3s; */
+  overflow: hidden;
+}
+
+.form-signup-element {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  bottom: 2.5rem;
+  right: 0;
+  margin: 8.2rem 0;
+  opacity: 100%;
+  transition: all 1s ease-in-out;
+}
+
+.form-signup-element-hidden {
+  right: 100px;
+  opacity: 0%;
+  /* transition-delay: 1s; */
+}
+
+.input-signup {
+  width: 510px;
+  height: 83px;
+  padding-left: 2rem;
+  border-radius: 15px;
+  border: 3px solid #5bb1ac;
+  font-size: 1.5rem;
+  transition: all 0.2s ease-in;
+  margin-bottom: 1rem;
+}
+
+.input-signup:focus {
+  outline: none;
+  transform: translateX(5px);
+}
+
+.input-error {
+  border: 6px solid #ea4949;
+}
+
+.error-message {
+  display: inline-block;
+  width: 510px;
+  color: #ea4949;
+  text-align: right;
+  position: relative;
+  bottom: 8px;
+  right: 5px;
+}
+
+@media only screen and (max-width: 1500px) {
+  .Login-master-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .login-container {
+    min-width: 400px;
+    width: 1100px;
+    max-width: 1400px;
+    height: 650px;
+    box-shadow: 0px 6px 21px 4px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    border-radius: 24px;
+    white-space: nowrap;
+    overflow: hidden;
+    background: rgb(112, 255, 198);
+    background: linear-gradient(
+      45deg,
+      rgba(112, 255, 198, 0.3393732492997199) 0%,
+      rgba(91, 177, 172, 1) 27%,
+      rgba(91, 177, 172, 1) 79%,
+      rgba(112, 255, 198, 0.4542191876750701) 100%
+    );
+    overflow: hidden;
+  }
+
+  .form-container {
+    height: 650px;
+    width: 700px;
     background-color: white;
-    border-radius: 0 36px 36px 0;
-    padding: 0 5rem;
+    border-radius: 0 24px 24px 0;
+    padding: 0 5rem 0 0;
     display: inline-block;
     position: relative;
     transition: all 1.5s ease-in-out;
     overflow: hidden;
-}
+  }
 
-.signin-element {
+  .all-form-move-left {
+    left: -700px;
+  }
+
+  .signup-container {
+    height: 650px;
+    position: relative;
+    display: inline-block;
+    min-width: 400px;
+    width: 400px;
+    max-width: 580px;
+    border-radius: 24px 0 0 24px;
+    padding: 3rem;
+    /* bottom: 4rem; */
+    right: 0px;
+    z-index: 5;
+    overflow: hidden;
+    transition: all 1.5s ease-in-out;
+  }
+
+  .signup-element {
+    position: relative;
+    bottom: 6rem;
+    /* margin: 0rem 0; */
+    white-space: normal;
+  }
+
+  .form-signup-container {
+    height: 650px;
+    width: 700px;
+    position: relative;
+    background-color: white;
+    border-radius: 24px 0 0 24px;
+    padding: 0 0 0 5rem;
+    display: inline-block;
+    transition: all 1s ease-in;
+    /* transition-delay: 3s; */
+    overflow: hidden;
+  }
+
+  .all-form-move-left {
+    left: -700px;
+  }
+
+  .header {
+    font-size: 48px;
+    font-weight: bold;
+    cursor: default;
+  }
+  .signin-element {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     gap: 1rem;
     position: relative;
-    bottom: 2.5rem;
-    right: 0;
-    margin: 15rem 0;
+    bottom: 7rem;
+    right: 0px;
+    /* margin: 0rem 0; */
     opacity: 100%;
     transition: all 1s ease-in-out;
-}
+  }
 
-.signin-element-hidden {
+  .signin-element-hidden {
     right: -100px;
     opacity: 0%;
-}
+  }
 
-.input-login {
-    width: 510px;
-    height: 83px;
-    padding-left: 2rem;
+  .input-login {
+    width: 480px;
+    height: 78px;
+    padding-left: 1.5rem;
     border-radius: 15px;
     border: 3px solid #5bb1ac;
     font-size: 1.5rem;
     transition: all 0.2s ease-in;
-}
+  }
 
-.input-login:focus {
-    outline: none;
-    transform: translateX(-5px);
-}
-
-.forget-password {
-    font-size: 1.1rem;
-    color: #5bb1ac;
-    padding-right: 8px;
-    cursor: pointer;
-}
-
-.form-signup-container {
-    height: 100%;
-    width: 820px;
-    position: relative;
-    background-color: white;
-    border-radius: 36px 0 0 36px;
-    padding: 0 0 0 8.5rem;
-    display: inline-block;
-    transition: all 1s ease-in;
-    /* transition-delay: 3s; */
-    overflow: hidden;
-}
-
-.form-signup-element {
+  .form-signup-element {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     position: relative;
-    bottom: 2.5rem;
+    /* bottom: 0.2rem; */
+    top: 1.5rem;
     right: 0;
-    margin: 8.2rem 0;
+    margin: auto 0;
     opacity: 100%;
     transition: all 1s ease-in-out;
-}
-
-.form-signup-element-hidden {
+  }
+  .form-signup-element-hidden {
     right: 100px;
     opacity: 0%;
     /* transition-delay: 1s; */
-}
+  }
 
-.input-signup {
-    width: 510px;
-    height: 83px;
+  .input-signup {
+    width: 400px;
+    height: 50px;
     padding-left: 2rem;
     border-radius: 15px;
     border: 3px solid #5bb1ac;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     transition: all 0.2s ease-in;
     margin-bottom: 1rem;
-}
+  }
 
-.input-signup:focus {
-    outline: none;
-    transform: translateX(5px);
-}
-
-.input-error {
-    border: 6px solid #ea4949;
-}
-
-.error-message {
+  .error-message {
     display: inline-block;
-    width: 510px;
+    width: 400px;
     color: #ea4949;
     text-align: right;
     position: relative;
     bottom: 8px;
     right: 5px;
-}
+  }
 
-@media only screen and (max-width: 1500px) {
-    .Login-master-container {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        overflow: hidden;
-    }
-    
-    .login-container {
-        min-width: 400px;
-        width: 1100px;
-        max-width: 1400px;
-        height: 650px;
-        box-shadow: 0px 6px 21px 4px rgba(0, 0, 0, 0.2);
-        display: inline-block;
-        border-radius: 24px;
-        white-space: nowrap;
-        overflow: hidden;
-        background: rgb(112, 255, 198);
-        background: linear-gradient(
-            45deg,
-            rgba(112, 255, 198, 0.3393732492997199) 0%,
-            rgba(91, 177, 172, 1) 27%,
-            rgba(91, 177, 172, 1) 79%,
-            rgba(112, 255, 198, 0.4542191876750701) 100%
-        );
-        overflow: hidden;
-    }
+  .d-btn {
+    width: 200px;
+    height: 60px;
+    border-radius: 30px;
+    cursor: pointer;
+  }
 
-    .form-container {
-        height: 650px;
-        width: 700px;
-        background-color: white;
-        border-radius: 0 24px 24px 0;
-        padding: 0 5rem 0 0;
-        display: inline-block;
-        position: relative;
-        transition: all 1.5s ease-in-out;
-        overflow: hidden;
-    }
+  .input-error {
+    border: 4px solid #ea4949;
+  }
 
-    .all-form-move-left {
-        left: -700px;
-    }
-
-    .signup-container {
-        height: 650px;
-        position: relative;
-        display: inline-block;
-        min-width: 400px;
-        width: 400px;
-        max-width: 580px;
-        border-radius: 24px 0 0 24px;
-        padding: 3rem;
-        /* bottom: 4rem; */
-        right: 0px;
-        z-index: 5;
-        overflow: hidden;
-        transition: all 1.5s ease-in-out;
-    }
-
-    .signup-element {
-        position: relative;
-        bottom: 6rem;
-        /* margin: 0rem 0; */
-        white-space: normal;
-    }
-
-    .form-signup-container {
-        height: 650px;
-        width: 700px;
-        position: relative;
-        background-color: white;
-        border-radius: 24px 0 0 24px;
-        padding: 0 0 0 5rem;
-        display: inline-block;
-        transition: all 1s ease-in;
-        /* transition-delay: 3s; */
-        overflow: hidden;
-    }
-
-    .all-form-move-left {
-        left: -700px;
-    }
-
-    .header {
-        font-size: 48px;
-        font-weight: bold;
-        cursor: default;
-    }
-    .signin-element {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        gap: 1rem;
-        position: relative;
-        bottom: 7rem;
-        right: 0px;
-        /* margin: 0rem 0; */
-        opacity: 100%;
-        transition: all 1s ease-in-out;
-    }
-
-    .signin-element-hidden {
-        right: -100px;
-        opacity: 0%;
-    }
-
-    .input-login {
-        width: 480px;
-        height: 78px;
-        padding-left: 1.5rem;
-        border-radius: 15px;
-        border: 3px solid #5bb1ac;
-        font-size: 1.5rem;
-        transition: all 0.2s ease-in;
-    }
-
-    .form-signup-element {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        position: relative;
-        /* bottom: 0.2rem; */
-        top: 1.5rem;
-        right: 0;
-        margin: auto 0;
-        opacity: 100%;
-        transition: all 1s ease-in-out;
-    }
-    .form-signup-element-hidden {
-        right: 100px;
-        opacity: 0%;
-        /* transition-delay: 1s; */
-    }
-
-    .input-signup {
-        width: 400px;
-        height: 58px;
-        padding-left: 2rem;
-        border-radius: 15px;
-        border: 3px solid #5bb1ac;
-        font-size: 1.2rem;
-        transition: all 0.2s ease-in;
-        margin-bottom: 1rem;
-    }
-
-    .input-signup {
-        width: 400px;
-        height: 58px;
-        padding-left: 2rem;
-        border-radius: 15px;
-        border: 3px solid #5bb1ac;
-        font-size: 1.2rem;
-        transition: all 0.2s ease-in;
-        margin-bottom: 1rem;
-    }
-
-    .error-message {
-        display: inline-block;
-        width: 400px;
-        color: #ea4949;
-        text-align: right;
-        position: relative;
-        bottom: 8px;
-        right: 5px;
-    }
-
-    .d-btn {
-        width: 200px;
-        height: 60px;
-        border-radius: 30px;
-        cursor: pointer;
-    }
-
-    .input-error {
-        border: 4px solid #ea4949;
-    }
-
-    .input-error::placeholder {
-        color: #ea4949;
-    }
+  .input-error::placeholder {
+    color: #ea4949;
+  }
 }

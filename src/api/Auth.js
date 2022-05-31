@@ -17,7 +17,8 @@ export function signUpApi(
   userName,
   password,
   confirmPassword,
-  phoneNumber
+  phoneNumber,
+  email
 ) {
   return axios.post("/auths/register", {
     firstName,
@@ -26,5 +27,6 @@ export function signUpApi(
     password,
     confirmPassword,
     phoneNumber,
+    email,
   });
 }
