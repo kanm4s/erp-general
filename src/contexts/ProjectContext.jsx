@@ -1,4 +1,5 @@
-import { createContext } from "react";
+import { createContext, useContext } from "react";
+import { createProjectApi } from "../api/project";
 
 const ProjectContext = createContext();
 
@@ -30,11 +31,24 @@ const ProjectContextProvider = (props) => {
     },
   ];
 
+  const createProject = async (name, clientName, deadLine, brief) => {
+    try {
+      await createProjectApi(name, clientName, deadLine, brief);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
-    <ProjectContext.Provider value={{ project }}>
+    <ProjectContext.Provider value={{ project, createProject }}>
       {props.children}
     </ProjectContext.Provider>
   );
 };
 
-export { ProjectContextProvider, ProjectContext };
+const useProject = () => {
+  const ctx = useContext(ProjectContext);
+  return ctx;
+};
+
+export { ProjectContextProvider, ProjectContext, useProject };

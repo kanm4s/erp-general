@@ -1,7 +1,7 @@
 import React from "react";
 import { Controller, useFormContext } from "react-hook-form";
 
-function Input({ name, type }) {
+function TextArea({ name, type }) {
   const {
     control,
     formState: { errors },
@@ -12,18 +12,20 @@ function Input({ name, type }) {
         control={control}
         render={({ field: { onChange, value } }) => {
           return (
-            <div className="grid grid-cols-5 gap-1">
+            <>
               <label htmlFor={name} className="pr-5 text-lg">
                 {name}
               </label>
-              <input
-                type={type}
-                name={name}
-                onChange={onChange}
-                value={value}
-                className="border-2 border-slate-300 focus:border-teal-500 rounded outline-none px-[5px] py-[3px] text-sm col-start-3 col-span-4"
-              />
-            </div>
+              <div className="grid grid-cols-5 gap-1">
+                <textarea
+                  type={type}
+                  name={name}
+                  onChange={onChange}
+                  value={value}
+                  className="border-2 border-slate-300 focus:border-teal-500 rounded outline-none px-[5px] py-[5px] text-sm col-start-1 col-span-5"
+                />
+              </div>
+            </>
           );
         }}
         name={name}
@@ -37,4 +39,4 @@ function Input({ name, type }) {
   );
 }
 
-export default Input;
+export default TextArea;

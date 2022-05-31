@@ -10,7 +10,7 @@ import { PageSelect } from "../../contexts/PageContext";
 
 export default function MainNav() {
   const [showMenuProfile, setShowMenuProfile] = useState(false);
-  const { user } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
   const { handleShowModal } = useContext(PageSelect);
   return (
     <div className="absolute flex">
@@ -67,7 +67,10 @@ export default function MainNav() {
               <h2 className="px-6 py-1 text-zinc-500 hover:text-zinc-100 transition ease-in-out bg-main-nav">
                 Edit profile
               </h2>
-              <h2 className="px-6 py-1 text-zinc-500 hover:text-zinc-100 transition ease-in-out bg-main-nav">
+              <h2
+                className="px-6 py-1 text-zinc-500 hover:text-zinc-100 transition ease-in-out bg-main-nav"
+                onClick={logout}
+              >
                 Logout
               </h2>
             </div>
