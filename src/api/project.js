@@ -8,3 +8,7 @@ export function createProjectApi(name, clientName, deadLine, brief) {
     brief,
   });
 }
+
+export function getAllProjectApi() {
+  return axios.get("/projects");
+}

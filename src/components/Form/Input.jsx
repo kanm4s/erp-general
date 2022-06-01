@@ -9,6 +9,7 @@ function Input({ name, type }) {
   return (
     <>
       <Controller
+        defaultValue={""}
         control={control}
         render={({ field: { onChange, value } }) => {
           return (

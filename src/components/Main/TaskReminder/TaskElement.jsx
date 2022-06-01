@@ -1,4 +1,4 @@
-import Model_task from "../../Modal/Model_task";
+import ModelTask from "../../Modal/ModelTask";
 
 export default function TaskElement(props) {
   const {
@@ -16,7 +16,7 @@ export default function TaskElement(props) {
   return (
     <>
       {showModal && (
-        <Model_task
+        <ModelTask
           title={title}
           delegateFrom={delegateFrom}
           delegateTo={delegateTo}

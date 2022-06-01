@@ -17,8 +17,8 @@ export default function MainPage() {
       <div className="flex flex-row w-full h-full px-16 2xl:px-20 gap-14 mb-5">
         <ModalTaskContext>
           <TaskReminder />
+          <ProjectProgress />
         </ModalTaskContext>
-        <ProjectProgress />
       </div>
     </motion.main>
   );

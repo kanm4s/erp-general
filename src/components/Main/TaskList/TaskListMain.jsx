@@ -1,30 +1,26 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { HiOutlineFilter } from "react-icons/hi";
 import { IoIosArrowDown } from "react-icons/io";
 
 import TaskElement from "./TaskElement";
 import tasksData from "./TaskData.json"; // tmp tasks data
 import TaskDetail from "./TaskDetail";
-
-const perChunk = 10; // items per page
-
-const result = tasksData.reduce((resultArray, item, index) => {
-  const chunkIndex = Math.floor(index / perChunk);
-
-  if (!resultArray[chunkIndex]) {
-    resultArray[chunkIndex] = []; // start a new page
-  }
-
-  resultArray[chunkIndex].push(item);
-
-  return resultArray;
-}, []);
+import { IoCreateOutline } from "react-icons/io5";
+import { AuthContext } from "../../../contexts/AuthContext";
+import { useParams } from "react-router-dom";
+import PaginationData from "../../utils/PaginationData";
 
 export default function TaskListMain() {
-  const [tasks] = useState(result);
+  const dataPerPage = PaginationData(10, tasksData);
+
+  const [tasks] = useState(dataPerPage);
   const [sortDateDesc, setSortDateDesc] = useState(true);
   const [taskPageShow, setTaskPageShow] = useState(tasks[0]);
   const [showDetail, setShowDetail] = useState("");
+
+  const { projectId } = useParams();
+
+  const { user } = useContext(AuthContext);
 
   const handleSortDateDesc = () => {
     setSortDateDesc(!sortDateDesc);
@@ -118,20 +114,28 @@ export default function TaskListMain() {
       {/* {showDetail && } */}
 
       {/* pagination */}
-      <div className="flex justify-end p-1 mt-2 mr-1">
-        {[...Array(tasks.length).keys()].map((ele, idx) => {
-          return (
-            <span
-              key={idx}
-              className="py-1 px-3 cursor-pointer hover:bg-slate-300 hover:text-slate-50 transition-all rounded mx-1"
-              onClick={(e) => {
-                setTaskPageShow(tasks[e.target.innerHTML - 1]);
-              }}
-            >
-              {idx + 1}
-            </span>
-          );
-        })}
+      <div className="flex justify-between p-1 mt-2 mr-1">
+        {user.position === "Manager" && (
+          <IoCreateOutline
+            className="text-lg cursor-pointer"
+            // onClick={handleCreateProject}
+          />
+        )}
+        <div>
+          {[...Array(tasks.length).keys()].map((ele, idx) => {
+            return (
+              <span
+                key={idx}
+                className="py-1 px-3 cursor-pointer hover:bg-slate-300 hover:text-slate-50 transition-all rounded mx-1"
+                onClick={(e) => {
+                  setTaskPageShow(tasks[e.target.innerHTML - 1]);
+                }}
+              >
+                {idx + 1}
+              </span>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

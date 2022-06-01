@@ -19,6 +19,7 @@ export default function Router() {
             <Route path="Home" element={<MainPage />} />
             <Route path="Projects" element={<ProjectPage />} />
             <Route path="Projects/create" element={<ProjectCreate />} />
+            <Route path="Projects/:projectId" element={<TasksPage />} />
             <Route path="Tasks" element={<TasksPage />} />
             <Route path="Employees" element={<EmployeesPage />} />
           </Route>

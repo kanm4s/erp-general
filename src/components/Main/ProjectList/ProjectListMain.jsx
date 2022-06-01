@@ -5,6 +5,7 @@ import { IoCreateOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 
 import { ProjectContext } from "../../../contexts/ProjectContext";
+import ProjectElement from "./ProjectElement";
 
 export default function ProjectListMain() {
   const { project } = useContext(ProjectContext);
@@ -34,13 +35,13 @@ export default function ProjectListMain() {
     if (sortDateDesc) {
       setProjectPageShow(
         projectPageShow.sort(
-          (a, b) => new Date(b.deadline) - new Date(a.deadline)
+          (a, b) => new Date(b.deadLine) - new Date(a.deadLine)
         )
       );
     } else {
       setProjectPageShow(
         projectPageShow.sort(
-          (a, b) => new Date(a.deadline) - new Date(b.deadline)
+          (a, b) => new Date(a.deadLine) - new Date(b.deadLine)
         )
       );
     }
@@ -48,6 +49,10 @@ export default function ProjectListMain() {
 
   const handleCreateProject = () => {
     navigate("/Projects/create");
+  };
+
+  const handleNavigateToTasks = (id) => {
+    navigate(`/Projects/${id}`);
   };
 
   const handleShowDetail = (id) => {
@@ -62,10 +67,9 @@ export default function ProjectListMain() {
     <div className="w-full h-fit min-w-[800px] max-w-[1000px] px-7 py-5 rounded-lg shadow-2xl bg-white overflow-hidden">
       {/* Header */}
       <div className="container cursor-pointer flex px-3 border-b-2 border-slate-300 border-dashed">
-        <div className="container relative right-1 columns-5 py-[8px] 2xl:py-[18px]">
+        <div className="container relative right-1 grid grid-cols-6 py-[8px] 2xl:py-[18px]">
           <span className="flex text-zinc-400">Project</span>
           <span className="flex text-zinc-400">Client</span>
-          <span className="flex text-zinc-400 gap-2">Delegate</span>
           <span className="flex text-zinc-400 gap-2">
             Deadline
             <div
@@ -84,47 +88,17 @@ export default function ProjectListMain() {
       </div>
 
       {/* all projects element */}
-      {/* {showDetail
-        ? projectPageShow
-            .filter((element) => {
-              if (showDetail) {
-                return element.id === showDetail;
-              } else {
-                return "";
-              }
-            })
-            .map((ele, idx) => (
-              <div>
-                <TaskElement
-                  key={idx}
-                  id={ele.id}
-                  title={ele.title}
-                  client={ele.client}
-                  delegateTo={ele.delegateTo}
-                  deadline={ele.deadline}
-                  showDetailFunction={handleShowDetail}
-                />
-                <TaskDetail
-                  title={ele.title}
-                  delegateFrom={ele.delegateFrom}
-                  delegateTo={ele.delegateTo}
-                  delegateDate={ele.delegateDate}
-                  deadline={ele.deadline}
-                  clientBrief={ele.clientBrief}
-                />
-              </div>
-            ))
-        : projectPageShow.map((ele, idx) => (
-            <TaskElement
-              key={idx}
-              id={ele.id}
-              title={ele.title}
-              client={ele.client}
-              delegateTo={ele.delegateTo}
-              deadline={ele.deadline}
-              showDetailFunction={handleShowDetail}
-            />
-          ))} */}
+      {projectPageShow.map((ele, idx) => (
+        <ProjectElement
+          key={idx}
+          id={ele.id}
+          name={ele.name}
+          clientName={ele.clientName}
+          deadLine={ele.deadLine}
+          showDetailFunction={handleShowDetail}
+          handleNavigateToTasks={handleNavigateToTasks}
+        />
+      ))}
 
       {/* {showDetail && } */}
 
