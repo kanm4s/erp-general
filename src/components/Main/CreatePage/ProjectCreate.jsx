@@ -12,7 +12,7 @@ export default function ProjectCreate() {
 
   const schema = yup.object().shape({
     projectName: yup.string().required("Project name is required"),
-    clientName: yup.string().required("Client name is required"),
+    clientName: yup.string().required("Project name is required"),
     date: yup.date().required("Date is required"),
     brief: yup.string(),
     // .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/, "not match"),

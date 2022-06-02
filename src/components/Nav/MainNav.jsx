@@ -7,17 +7,19 @@ import SectionMenu from "../Nav/SectionMenu";
 import SubNav from "./SubNav/SubNav";
 import { AuthContext } from "../../contexts/AuthContext";
 import { PageSelect } from "../../contexts/PageContext";
+import { useNavigate } from "react-router-dom";
 
 export default function MainNav() {
   const [showMenuProfile, setShowMenuProfile] = useState(false);
   const { user, logout } = useContext(AuthContext);
   const { handleShowModal } = useContext(PageSelect);
+  const navigate = useNavigate();
   return (
     <div className="absolute flex">
       <nav className="relative w-48 2xl:w-52 z-20 bg-neutral-100 h-screen py-8 2xl:py-16 flex flex-col justify-between">
         <h1
           className="text-4xl font-bold h-16 text-main-color cursor-pointer pl-6 2xl:pl-10"
-          onClick={() => handleShowModal("MAIN")}
+          onClick={() => navigate("/Home")}
         >
           ERP
         </h1>

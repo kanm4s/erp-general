@@ -1,36 +1,63 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { HiOutlineFilter } from "react-icons/hi";
 import { IoIosArrowDown } from "react-icons/io";
 
 import TaskElement from "./TaskElement";
-import tasksData from "./TaskData.json"; // tmp tasks data
 import TaskDetail from "./TaskDetail";
 import { IoCreateOutline } from "react-icons/io5";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { useParams } from "react-router-dom";
-import PaginationData from "../../utils/PaginationData";
+import { getAllTasksApi, getTasksByProjectIdApi } from "../../../api/project";
+import Pagination from "../../utils/Pagination";
 
 export default function TaskListMain() {
-  const dataPerPage = PaginationData(10, tasksData);
+  const { projectId } = useParams();
+  const { user } = useContext(AuthContext);
 
-  const [tasks] = useState(dataPerPage);
+  const [tasks, setTasks] = useState([]);
   const [sortDateDesc, setSortDateDesc] = useState(true);
-  const [taskPageShow, setTaskPageShow] = useState(tasks[0]);
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [tasksPerPage] = useState(9);
   const [showDetail, setShowDetail] = useState("");
 
-  const { projectId } = useParams();
+  useEffect(() => {
+    try {
+      const fetchTask = async (id) => {
+        if (!id) {
+          setLoading(true);
+          const res = await getAllTasksApi();
+          setTasks(res.data.allTask);
+          setLoading(false);
+        } else {
+          setLoading(true);
+          const res = await getTasksByProjectIdApi(id);
+          setTasks(res.data.tasks);
+          setLoading(false);
+        }
+      };
+      fetchTask(projectId);
+    } catch (err) {
+      console.log(err);
+    }
+  }, [projectId]);
 
-  const { user } = useContext(AuthContext);
+  const indexOfLastTask = currentPage * tasksPerPage;
+  const indexOfFirstTask = indexOfLastTask - tasksPerPage;
+  const currentTasks = tasks.slice(indexOfFirstTask, indexOfLastTask);
+
+  // change page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const handleSortDateDesc = () => {
     setSortDateDesc(!sortDateDesc);
     if (sortDateDesc) {
-      setTaskPageShow(
-        taskPageShow.sort((a, b) => new Date(b.deadline) - new Date(a.deadline))
+      setTasks(
+        tasks.sort((a, b) => new Date(b.deadLine) - new Date(a.deadLine))
       );
     } else {
-      setTaskPageShow(
-        taskPageShow.sort((a, b) => new Date(a.deadline) - new Date(b.deadline))
+      setTasks(
+        tasks.sort((a, b) => new Date(a.deadLine) - new Date(b.deadLine))
       );
     }
   };
@@ -48,8 +75,8 @@ export default function TaskListMain() {
       {/* Header */}
       <div className="container cursor-pointer flex px-3 border-b-2 border-slate-300 border-dashed">
         <div className="container relative right-1 columns-5 py-[8px] 2xl:py-[18px]">
-          <span className="flex text-zinc-400">Project</span>
-          <span className="flex text-zinc-400">Client</span>
+          <span className="flex text-zinc-400">Name</span>
+          <span className="flex text-zinc-400">Type</span>
           <span className="flex text-zinc-400 gap-2">Delegate</span>
           <span className="flex text-zinc-400 gap-2">
             Deadline
@@ -69,8 +96,9 @@ export default function TaskListMain() {
       </div>
 
       {/* all tasks element */}
+      {loading && <h2>loading ...</h2>}
       {showDetail
-        ? taskPageShow
+        ? currentTasks
             .filter((element) => {
               if (showDetail) {
                 return element.id === showDetail;
@@ -83,30 +111,31 @@ export default function TaskListMain() {
                 <TaskElement
                   key={idx}
                   id={ele.id}
-                  title={ele.title}
-                  client={ele.client}
+                  name={ele.name}
+                  type={ele.type}
                   delegateTo={ele.delegateTo}
-                  deadline={ele.deadline}
+                  deadLine={ele.deadLine}
                   showDetailFunction={handleShowDetail}
                 />
                 <TaskDetail
-                  title={ele.title}
+                  user={user}
+                  title={ele.name}
                   delegateFrom={ele.delegateFrom}
                   delegateTo={ele.delegateTo}
                   delegateDate={ele.delegateDate}
-                  deadline={ele.deadline}
-                  clientBrief={ele.clientBrief}
+                  deadLine={ele.deadLine}
+                  brief={ele.brief}
                 />
               </div>
             ))
-        : taskPageShow.map((ele, idx) => (
+        : currentTasks?.map((ele, idx) => (
             <TaskElement
               key={idx}
               id={ele.id}
-              title={ele.title}
-              client={ele.client}
+              name={ele.name}
+              type={ele.type}
               delegateTo={ele.delegateTo}
-              deadline={ele.deadline}
+              deadLine={ele.deadLine}
               showDetailFunction={handleShowDetail}
             />
           ))}
@@ -122,19 +151,11 @@ export default function TaskListMain() {
           />
         )}
         <div>
-          {[...Array(tasks.length).keys()].map((ele, idx) => {
-            return (
-              <span
-                key={idx}
-                className="py-1 px-3 cursor-pointer hover:bg-slate-300 hover:text-slate-50 transition-all rounded mx-1"
-                onClick={(e) => {
-                  setTaskPageShow(tasks[e.target.innerHTML - 1]);
-                }}
-              >
-                {idx + 1}
-              </span>
-            );
-          })}
+          <Pagination
+            itemsPerPage={tasksPerPage}
+            totalItems={tasks.length}
+            paginate={paginate}
+          />
         </div>
       </div>
     </div>

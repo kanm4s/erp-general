@@ -16,14 +16,6 @@ const SubmitButton = ({ onClick, children, disabled = false, style }) => {
         </button>
       </div>
     </div>
-    // <Button
-    //   onClick={handleSubmit((data) => {
-    //     onClick(data, reset);
-    //   })}
-    //   disabled={disabled}
-    //   style={style}>
-    //   {children}
-    // </Button>
   );
 };
 

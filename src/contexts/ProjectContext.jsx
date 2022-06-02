@@ -5,12 +5,15 @@ const ProjectContext = createContext();
 
 const ProjectContextProvider = (props) => {
   const [project, setProject] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const fetchProject = async () => {
     try {
+      setLoading(true);
       const res = await getAllProjectApi();
 
       setProject(res.data.allProject);
+      setLoading(false);
     } catch (err) {
       console.log(err);
     }
@@ -19,32 +22,6 @@ const ProjectContextProvider = (props) => {
   useEffect(() => {
     fetchProject();
   }, []);
-  // const project = [
-  //   {
-  //     name: "Starship Trooper",
-  //     clientName: "ScanBy",
-  //     deadLine: "2022-12-15",
-  //     brief: "jdsf;lkdsjflaksdjf;",
-  //   },
-  //   {
-  //     name: "Starship Trooper",
-  //     clientName: "ScanBy",
-  //     deadLine: "2022-12-14",
-  //     brief: "jdsf;lkdsjflaksdjf;",
-  //   },
-  //   {
-  //     name: "Starship Trooper",
-  //     clientName: "ScanBy",
-  //     deadLine: "2022-12-18",
-  //     brief: "jdsf;lkdsjflaksdjf;",
-  //   },
-  //   {
-  //     name: "Starship Trooper",
-  //     clientName: "ScanBy",
-  //     deadLine: "2022-12-20",
-  //     brief: "jdsf;lkdsjflaksdjf;",
-  //   },
-  // ];
 
   const createProject = async (name, clientName, deadLine, brief) => {
     try {
@@ -56,7 +33,7 @@ const ProjectContextProvider = (props) => {
   };
 
   return (
-    <ProjectContext.Provider value={{ project, createProject }}>
+    <ProjectContext.Provider value={{ project, createProject, loading }}>
       {props.children}
     </ProjectContext.Provider>
   );

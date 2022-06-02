@@ -5,44 +5,34 @@ import { IoCreateOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 
 import { ProjectContext } from "../../../contexts/ProjectContext";
+import Pagination from "../../utils/Pagination";
 import ProjectElement from "./ProjectElement";
 
 export default function ProjectListMain() {
-  const { project } = useContext(ProjectContext);
+  const { project, loading } = useContext(ProjectContext);
   const navigate = useNavigate();
 
-  const perChunk = 10; // items per page
-
-  const result = project.reduce((resultArray, item, index) => {
-    const chunkIndex = Math.floor(index / perChunk);
-
-    if (!resultArray[chunkIndex]) {
-      resultArray[chunkIndex] = []; // start a new page
-    }
-
-    resultArray[chunkIndex].push(item);
-
-    return resultArray;
-  }, []);
-
-  const [projects] = useState(result);
+  const [projects, setProject] = useState(project);
   const [sortDateDesc, setSortDateDesc] = useState(true);
-  const [projectPageShow, setProjectPageShow] = useState(projects[0]);
-  const [showDetail, setShowDetail] = useState("");
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [projectsPerPage] = useState(9);
+
+  const indexOfLastTask = currentPage * projectsPerPage;
+  const indexOfFirstTask = indexOfLastTask - projectsPerPage;
+  const currentProjects = projects.slice(indexOfFirstTask, indexOfLastTask);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const handleSortDateDesc = () => {
     setSortDateDesc(!sortDateDesc);
     if (sortDateDesc) {
-      setProjectPageShow(
-        projectPageShow.sort(
-          (a, b) => new Date(b.deadLine) - new Date(a.deadLine)
-        )
+      setProject(
+        projects.sort((a, b) => new Date(b.deadLine) - new Date(a.deadLine))
       );
     } else {
-      setProjectPageShow(
-        projectPageShow.sort(
-          (a, b) => new Date(a.deadLine) - new Date(b.deadLine)
-        )
+      setProject(
+        projects.sort((a, b) => new Date(a.deadLine) - new Date(b.deadLine))
       );
     }
   };
@@ -53,14 +43,6 @@ export default function ProjectListMain() {
 
   const handleNavigateToTasks = (id) => {
     navigate(`/Projects/${id}`);
-  };
-
-  const handleShowDetail = (id) => {
-    if (showDetail === "") {
-      setShowDetail(id);
-    } else {
-      setShowDetail("");
-    }
   };
 
   return (
@@ -88,14 +70,14 @@ export default function ProjectListMain() {
       </div>
 
       {/* all projects element */}
-      {projectPageShow.map((ele, idx) => (
+      {loading && <h2>loading ...</h2>}
+      {currentProjects.map((ele, idx) => (
         <ProjectElement
           key={idx}
           id={ele.id}
           name={ele.name}
           clientName={ele.clientName}
           deadLine={ele.deadLine}
-          showDetailFunction={handleShowDetail}
           handleNavigateToTasks={handleNavigateToTasks}
         />
       ))}
@@ -108,19 +90,11 @@ export default function ProjectListMain() {
           className="text-lg cursor-pointer"
           onClick={handleCreateProject}
         />
-        {[...Array(projects.length).keys()].map((ele, idx) => {
-          return (
-            <span
-              key={idx}
-              className="py-1 px-3 cursor-pointer hover:bg-slate-300 hover:text-slate-50 transition-all rounded mx-1"
-              onClick={(e) => {
-                setProjectPageShow(projects[e.target.innerHTML - 1]);
-              }}
-            >
-              {idx + 1}
-            </span>
-          );
-        })}
+        <Pagination
+          itemsPerPage={projectsPerPage}
+          totalItems={projects.length}
+          paginate={paginate}
+        />
       </div>
     </div>
   );
