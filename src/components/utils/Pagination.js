@@ -10,8 +10,9 @@ export default function Pagination({ itemsPerPage, totalItems, paginate }) {
           <li
             key={number}
             className="py-1 px-3 cursor-pointer hover:bg-slate-300 hover:text-slate-50 transition-all rounded mx-1"
+            onClick={() => paginate(number)}
           >
-            <div onClick={() => paginate(number)}>{number}</div>
+            <div>{number}</div>
           </li>
         ))}
       </ul>

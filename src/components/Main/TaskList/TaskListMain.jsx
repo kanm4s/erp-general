@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { HiOutlineFilter } from "react-icons/hi";
 import { IoIosArrowDown } from "react-icons/io";
 
@@ -6,41 +6,21 @@ import TaskElement from "./TaskElement";
 import TaskDetail from "./TaskDetail";
 import { IoCreateOutline } from "react-icons/io5";
 import { AuthContext } from "../../../contexts/AuthContext";
-import { useParams } from "react-router-dom";
-import { getAllTasksApi, getTasksByProjectIdApi } from "../../../api/project";
+import { useNavigate, useParams } from "react-router-dom";
+
 import Pagination from "../../utils/Pagination";
 
-export default function TaskListMain() {
+export default function TaskListMain(props) {
+  const { tasks, setTasks, loading } = props;
   const { projectId } = useParams();
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-  const [tasks, setTasks] = useState([]);
   const [sortDateDesc, setSortDateDesc] = useState(true);
-  const [loading, setLoading] = useState(false);
+
   const [currentPage, setCurrentPage] = useState(1);
   const [tasksPerPage] = useState(9);
   const [showDetail, setShowDetail] = useState("");
-
-  useEffect(() => {
-    try {
-      const fetchTask = async (id) => {
-        if (!id) {
-          setLoading(true);
-          const res = await getAllTasksApi();
-          setTasks(res.data.allTask);
-          setLoading(false);
-        } else {
-          setLoading(true);
-          const res = await getTasksByProjectIdApi(id);
-          setTasks(res.data.tasks);
-          setLoading(false);
-        }
-      };
-      fetchTask(projectId);
-    } catch (err) {
-      console.log(err);
-    }
-  }, [projectId]);
 
   const indexOfLastTask = currentPage * tasksPerPage;
   const indexOfFirstTask = indexOfLastTask - tasksPerPage;
@@ -116,6 +96,7 @@ export default function TaskListMain() {
                   delegateTo={ele.delegateTo}
                   deadLine={ele.deadLine}
                   showDetailFunction={handleShowDetail}
+                  projectId={projectId}
                 />
                 <TaskDetail
                   user={user}
@@ -137,6 +118,7 @@ export default function TaskListMain() {
               delegateTo={ele.delegateTo}
               deadLine={ele.deadLine}
               showDetailFunction={handleShowDetail}
+              projectId={projectId}
             />
           ))}
 
@@ -147,7 +129,7 @@ export default function TaskListMain() {
         {user.position === "Manager" && (
           <IoCreateOutline
             className="text-lg cursor-pointer"
-            // onClick={handleCreateProject}
+            onClick={() => navigate(`/Projects/${projectId}/createTask`)}
           />
         )}
         <div>

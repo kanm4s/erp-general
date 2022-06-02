@@ -1,7 +1,7 @@
 import React from "react";
 import { Controller, useFormContext } from "react-hook-form";
 
-function Input({ name, type }) {
+function Input({ name, type, editPrev }) {
   const {
     control,
     formState: { errors },

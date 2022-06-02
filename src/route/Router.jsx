@@ -8,6 +8,7 @@ import ProjectPage from "../components/Main/ProjectPage";
 import EmployeesPage from "../components/Main/EmployeesPage";
 import TasksPage from "../components/Main/TasksPage";
 import ProjectCreate from "../components/Main/CreatePage/ProjectCreate";
+import TaskCreate from "../components/Main/CreatePage/TaskCreate";
 
 export default function Router() {
   const { user } = useContext(AuthContext);
@@ -20,6 +21,14 @@ export default function Router() {
             <Route path="Projects" element={<ProjectPage />} />
             <Route path="Projects/create" element={<ProjectCreate />} />
             <Route path="Projects/:projectId" element={<TasksPage />} />
+            <Route
+              path="Projects/:projectId/createTask"
+              element={<TaskCreate />}
+            />
+            <Route
+              path="Projects/:projectId/createTask/:taskId"
+              element={<TaskCreate />}
+            />
             <Route path="Tasks" element={<TasksPage />} />
             <Route path="Employees" element={<EmployeesPage />} />
           </Route>
