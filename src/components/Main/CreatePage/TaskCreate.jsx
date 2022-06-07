@@ -71,6 +71,7 @@ export default function TaskCreate() {
                       deadLine: task.deadLine,
                       brief: task.brief,
                     }}
+                    onSubmit={onSubmit}
                   >
                     <div className="flex flex-col gap-3">
                       <div>
@@ -85,7 +86,7 @@ export default function TaskCreate() {
                       <div>
                         <TextArea name="brief" type="text" />
                       </div>
-                      <SubmitButton onClick={onSubmit}>comfirm</SubmitButton>
+                      <SubmitButton>comfirm</SubmitButton>
                     </div>
                   </Form>
                 </div>
@@ -106,7 +107,7 @@ export default function TaskCreate() {
           <div className="flex flex-row w-full h-full px-16 2xl:px-20 mb-20">
             <div className="w-full h-fit min-w-[800px] max-w-[1000px] px-7 py-5 rounded-lg shadow-2xl bg-white overflow-hidden">
               <div className="grid grid-cols-2">
-                <Form schema={schema}>
+                <Form schema={schema} onSubmit={onSubmit}>
                   <div className="flex flex-col gap-3">
                     <div>
                       <Input name="name" type="text" />

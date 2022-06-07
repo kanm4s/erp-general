@@ -1,9 +1,13 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-export const Form = ({ defaultValues = {}, children, schema, style }) => {
+export const Form = ({
+  onSubmit,
+  defaultValues = {},
+  children,
+  schema,
+  style,
+}) => {
   const methods = useForm({
     defaultValues,
     resolver: yupResolver(schema),
@@ -11,7 +15,12 @@ export const Form = ({ defaultValues = {}, children, schema, style }) => {
 
   return (
     <FormProvider {...methods}>
-      <div style={style}>{children}</div>
+      <form
+        onSubmit={methods.handleSubmit((data) => onSubmit(data))}
+        style={style}
+      >
+        {children}
+      </form>
     </FormProvider>
   );
 };

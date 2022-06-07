@@ -9,6 +9,8 @@ import EmployeesPage from "../components/Main/EmployeesPage";
 import TasksPage from "../components/Main/TasksPage";
 import ProjectCreate from "../components/Main/CreatePage/ProjectCreate";
 import TaskCreate from "../components/Main/CreatePage/TaskCreate";
+import EmailPage from "../components/Main/EmailPage";
+import EmailCreate from "../components/Main/CreatePage/EmailCreate";
 
 export default function Router() {
   const { user } = useContext(AuthContext);
@@ -20,6 +22,10 @@ export default function Router() {
             <Route path="Home" element={<MainPage />} />
             <Route path="Projects" element={<ProjectPage />} />
             <Route path="Projects/create" element={<ProjectCreate />} />
+            <Route
+              path="Projects/edit/:projectId"
+              element={<ProjectCreate />}
+            />
             <Route path="Projects/:projectId" element={<TasksPage />} />
             <Route
               path="Projects/:projectId/createTask"
@@ -31,6 +37,8 @@ export default function Router() {
             />
             <Route path="Tasks" element={<TasksPage />} />
             <Route path="Employees" element={<EmployeesPage />} />
+            <Route path="MailBox" element={<EmailPage />} />
+            <Route path="MailBox/createEmail" element={<EmailCreate />} />
           </Route>
           <Route path="*" element={<Navigate to="/Home" />} />
         </>

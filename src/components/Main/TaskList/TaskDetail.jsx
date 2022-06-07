@@ -1,9 +1,11 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { delegateTaskApi } from "../../../api/project";
 import { getAllUser } from "../../../api/user";
 
 export default function TaskDetail(props) {
   const {
+    id,
     user,
     title,
     delegateFrom,
@@ -14,6 +16,7 @@ export default function TaskDetail(props) {
   } = props;
 
   const [users, setUsers] = useState([]);
+  const [delegateTarget, setDelegateTarget] = useState("0");
 
   useEffect(() => {
     const fetchAllUser = async () => {
@@ -22,6 +25,16 @@ export default function TaskDetail(props) {
     };
     fetchAllUser();
   }, []);
+
+  const handleDelegateTask = async (e) => {
+    try {
+      e.preventDefault();
+
+      await delegateTaskApi(delegateTarget, id);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <>
@@ -60,11 +73,12 @@ export default function TaskDetail(props) {
                 </div>
               </form>
             ) : (
-              <form>
+              <form onSubmit={handleDelegateTask}>
                 <div className="container grid grid-cols-2 gap-2">
                   <select
                     name="user"
                     className="border-2 border-slate-300 px-2 py-1 rounded cursor-pointer"
+                    onChange={(e) => setDelegateTarget(e.target.value)}
                   >
                     {users.map((ele) => (
                       <option key={ele.id} value={ele.id}>

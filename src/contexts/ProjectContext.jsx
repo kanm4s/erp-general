@@ -1,10 +1,16 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { createProjectApi, getAllProjectApi } from "../api/project";
+import {
+  createProjectApi,
+  getAllProjectApi,
+  updateProjectApi,
+  updateTaskByIdApi,
+} from "../api/project";
 
 const ProjectContext = createContext();
 
 const ProjectContextProvider = (props) => {
   const [project, setProject] = useState([]);
+
   const [loading, setLoading] = useState(false);
 
   const fetchProject = async () => {
@@ -32,8 +38,36 @@ const ProjectContextProvider = (props) => {
     }
   };
 
+  const updateProject = async (
+    name,
+    clientName,
+    deadLine,
+    brief,
+    selectProjectId
+  ) => {
+    try {
+      await updateProjectApi(
+        name,
+        clientName,
+        deadLine,
+        brief,
+        selectProjectId
+      );
+      await fetchProject();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
-    <ProjectContext.Provider value={{ project, createProject, loading }}>
+    <ProjectContext.Provider
+      value={{
+        project,
+        createProject,
+        loading,
+        updateProject,
+      }}
+    >
       {props.children}
     </ProjectContext.Provider>
   );

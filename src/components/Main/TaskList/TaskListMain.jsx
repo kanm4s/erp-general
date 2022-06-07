@@ -54,7 +54,7 @@ export default function TaskListMain(props) {
     <div className="w-full h-fit min-w-[800px] max-w-[1000px] px-7 py-5 rounded-lg shadow-2xl bg-white overflow-hidden">
       {/* Header */}
       <div className="container cursor-pointer flex px-3 border-b-2 border-slate-300 border-dashed">
-        <div className="container relative right-1 columns-5 py-[8px] 2xl:py-[18px]">
+        <div className="container relative right-1 grid grid-cols-5 py-[8px] 2xl:py-[18px]">
           <span className="flex text-zinc-400">Name</span>
           <span className="flex text-zinc-400">Type</span>
           <span className="flex text-zinc-400 gap-2">Delegate</span>
@@ -99,6 +99,8 @@ export default function TaskListMain(props) {
                   projectId={projectId}
                 />
                 <TaskDetail
+                  key={idx}
+                  id={ele.id}
                   user={user}
                   title={ele.name}
                   delegateFrom={ele.delegateFrom}

@@ -3,13 +3,14 @@ import { motion } from "framer-motion";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useContext, useEffect, useState } from "react";
 import { getAllTasksApi, getTasksByProjectIdApi } from "../../api/project";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function TasksPage() {
   const { projectId } = useParams();
   const { user } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
   const [tasks, setTasks] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     try {
@@ -40,7 +41,17 @@ export default function TasksPage() {
     >
       <h1 className="text-4xl 2xl:text-6xl text-main-color font-bold cursor-default px-14 2xl:px-20 pt-9 mt-10 mb-6">
         {projectId ? (
-          <div>{`${tasks[0]?.Project?.clientName} > Tasks`}</div>
+          <div>
+            <span
+              className="cursor-pointer"
+              onClick={() => {
+                navigate("/Projects");
+              }}
+            >
+              {`${tasks[0]?.Project?.clientName}`}
+            </span>
+            {` > Tasks`}
+          </div>
         ) : (
           "Tasks"
         )}

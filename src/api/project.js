@@ -9,6 +9,23 @@ export function createProjectApi(name, clientName, deadLine, brief) {
   });
 }
 
+export function updateProjectApi(name, clientName, deadLine, brief, projectId) {
+  return axios.patch(`/projects/${projectId}`, {
+    name,
+    clientName,
+    deadLine,
+    brief,
+  });
+}
+
+export function getAllProjectApi() {
+  return axios.get("/projects");
+}
+
+export function getProjectByIdApi(id) {
+  return axios.get(`/projects/${id}`);
+}
+
 export function createTaskApi(name, projectId, deadLine, type, brief) {
   return axios.post(`/projects/createTask/${projectId}`, {
     name,
@@ -31,14 +48,14 @@ export function getTaskById(id) {
   return axios.get(`/projects/tasks/${id}`);
 }
 
-export function getAllProjectApi() {
-  return axios.get("/projects");
-}
-
 export function getAllTasksApi() {
   return axios.get("/projects/tasks");
 }
 
 export function getTasksByProjectIdApi(projectId) {
   return axios.get(`/projects/${projectId}/tasks`);
+}
+
+export function delegateTaskApi(receiverId, taskId) {
+  return axios.post("/projects/tasks/delegate", { receiverId, taskId });
 }

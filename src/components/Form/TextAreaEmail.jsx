@@ -1,7 +1,7 @@
 import React from "react";
 import { Controller, useFormContext } from "react-hook-form";
 
-function Input({ name, type, editPrev }) {
+function TextAreaEmail({ name, type }) {
   const {
     control,
     formState: { errors },
@@ -9,22 +9,18 @@ function Input({ name, type, editPrev }) {
   return (
     <>
       <Controller
-        defaultValue={editPrev ? editPrev : ""}
         control={control}
         render={({ field: { onChange, value } }) => {
           return (
-            <div className="grid grid-cols-5 gap-1">
-              <label htmlFor={name} className="pr-5 text-lg">
-                {name}
-              </label>
-              <input
+            <>
+              <textarea
                 type={type}
                 name={name}
                 onChange={onChange}
                 value={value}
-                className="border-2 border-slate-300 focus:border-teal-500 rounded outline-none px-[5px] py-[3px] text-sm col-start-3 col-span-4"
+                className="border-none focus:outline-none rounded outline-none px-[10px] py-[10px] text-sm w-full h-full resize-y max-h-80"
               />
-            </div>
+            </>
           );
         }}
         name={name}
@@ -38,4 +34,4 @@ function Input({ name, type, editPrev }) {
   );
 }
 
-export default Input;
+export default TextAreaEmail;

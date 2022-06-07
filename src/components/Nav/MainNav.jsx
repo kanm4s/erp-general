@@ -6,13 +6,11 @@ import { HiOutlineMail, HiOutlineSun } from "react-icons/hi";
 import SectionMenu from "../Nav/SectionMenu";
 import SubNav from "./SubNav/SubNav";
 import { AuthContext } from "../../contexts/AuthContext";
-import { PageSelect } from "../../contexts/PageContext";
 import { useNavigate } from "react-router-dom";
 
 export default function MainNav() {
   const [showMenuProfile, setShowMenuProfile] = useState(false);
   const { user, logout } = useContext(AuthContext);
-  const { handleShowModal } = useContext(PageSelect);
   const navigate = useNavigate();
   return (
     <div className="absolute flex">
@@ -90,8 +88,10 @@ export default function MainNav() {
             className="w-12 h-12 rounded-full"
           />
           <div className="relative top-1 cursor-pointer">
-            <h1 className="text-base font-bold text-zinc-700">Kantapon</h1>
-            <p className="relative bottom-2 text-zinc-400">Junior</p>
+            <h1 className="text-base font-bold text-zinc-700">
+              {user.firstName}
+            </h1>
+            <p className="relative bottom-2 text-zinc-400">{user.position}</p>
           </div>
         </div>
       </nav>

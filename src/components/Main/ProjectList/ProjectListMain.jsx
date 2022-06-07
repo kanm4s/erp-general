@@ -20,7 +20,7 @@ export default function ProjectListMain() {
 
   const indexOfLastTask = currentPage * projectsPerPage;
   const indexOfFirstTask = indexOfLastTask - projectsPerPage;
-  const currentProjects = projects.slice(indexOfFirstTask, indexOfLastTask);
+  const currentProjects = projects?.slice(indexOfFirstTask, indexOfLastTask);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -71,7 +71,7 @@ export default function ProjectListMain() {
 
       {/* all projects element */}
       {loading && <h2>loading ...</h2>}
-      {currentProjects.map((ele, idx) => (
+      {currentProjects?.map((ele, idx) => (
         <ProjectElement
           key={idx}
           id={ele.id}

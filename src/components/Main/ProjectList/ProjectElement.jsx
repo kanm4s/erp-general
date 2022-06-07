@@ -1,8 +1,10 @@
 import { MdOutlineStickyNote2 } from "react-icons/md";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 export default function ProjectElement(props) {
   const { id, name, clientName, deadLine, handleNavigateToTasks } = props;
+  const navigate = useNavigate();
   return (
     <motion.div
       className="border-l-4 border-white hover:border-teal-500 transition-all"
@@ -22,7 +24,7 @@ export default function ProjectElement(props) {
         <span className="flex text-zinc-400 justify-end z-10 py-[8px]">
           <div
             className="p-1 hover:bg-slate-300 hover:text-slate-50 transition-all rounded"
-            onClick={() => console.log("test")}
+            onClick={() => navigate(`/Projects/edit/${id}`)}
           >
             <MdOutlineStickyNote2 className="cursor-pointer" />
           </div>
