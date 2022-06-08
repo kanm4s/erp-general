@@ -5,30 +5,21 @@ import Router from "./route/Router";
 import { NavContextProvider } from "./contexts/NavContext";
 import { EmployeeContextProvider } from "./contexts/EmployeeContext";
 import { EmailContextProvider } from "./contexts/EmailContext";
-import { io } from "socket.io-client";
-import { useEffect, useRef } from "react";
+import ChatContextProvider from "./contexts/ChatContext";
 
 function App() {
-  const socket = useRef();
-
-  useEffect(() => {
-    socket.current = io("ws://localhost:8003");
-
-    socket.current.on("connection", () => {
-      console.log("connected to server");
-    });
-  }, []);
-
   return (
     <AnimatePresence>
       <MainPageContext>
-        <NavContextProvider>
-          <EmployeeContextProvider>
-            <EmailContextProvider>
-              <Router />
-            </EmailContextProvider>
-          </EmployeeContextProvider>
-        </NavContextProvider>
+        <ChatContextProvider>
+          <NavContextProvider>
+            <EmployeeContextProvider>
+              <EmailContextProvider>
+                <Router />
+              </EmailContextProvider>
+            </EmployeeContextProvider>
+          </NavContextProvider>
+        </ChatContextProvider>
       </MainPageContext>
     </AnimatePresence>
   );

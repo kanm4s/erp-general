@@ -32,6 +32,7 @@ export default function TasksPage() {
       console.log(err);
     }
   }, [projectId]);
+
   return (
     <motion.main
       className="relative flex flex-col px-56 h-screen grow gap-1 bg-neutral-50"

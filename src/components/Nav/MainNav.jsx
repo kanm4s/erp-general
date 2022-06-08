@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function MainNav() {
   const [showMenuProfile, setShowMenuProfile] = useState(false);
+  const [notificationBell, setNotificationBell] = useState(false);
   const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate();
   return (
@@ -46,7 +47,7 @@ export default function MainNav() {
             name={[
               { title: "MailBox", type: "navigate" },
               { title: "Message", type: "subMenu" },
-              { title: "Notification", type: "subMenu" },
+              { title: "Notification", type: "subMenu", notificationBell },
             ]}
           />
           <SectionMenu

@@ -18,6 +18,10 @@ export function updateProjectApi(name, clientName, deadLine, brief, projectId) {
   });
 }
 
+export function editTaskWorkingStatusById(id, workingStatus) {
+  return axios.patch(`/projects/tasks/wokingStatus/${id}`, { workingStatus });
+}
+
 export function getAllProjectApi() {
   return axios.get("/projects");
 }

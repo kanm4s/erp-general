@@ -6,20 +6,29 @@ import {
   setAccessToken,
 } from "../service/localStorage";
 import { getUser, loginApi, signUpApi } from "../api/Auth";
+import socket from "../config/socket";
 
 const AuthContext = createContext();
 
 const AuthContextProvider = (props) => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
+  const token = getAccessToken();
 
   useEffect(() => {
     const fetchMe = async () => {
       try {
-        const token = getAccessToken();
         if (token) {
           const resMe = await getUser();
           setUser(resMe.data.user);
+
+          socket.on("connection", () => {
+            console.log("connected to server");
+          });
+
+          socket.on("users", (users) => {
+            console.log(users);
+          });
         }
       } catch (err) {
         removeAccessToken();
@@ -35,6 +44,9 @@ const AuthContextProvider = (props) => {
       setAccessToken(res.data.token);
       const resMe = await getUser();
       setUser(resMe.data.user);
+      socket.on("connection", () => {
+        console.log("connected to server");
+      });
     } catch (err) {
       console.log(err);
     }

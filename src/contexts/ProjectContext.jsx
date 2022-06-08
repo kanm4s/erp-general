@@ -1,9 +1,9 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import {
   createProjectApi,
+  editTaskWorkingStatusById,
   getAllProjectApi,
   updateProjectApi,
-  updateTaskByIdApi,
 } from "../api/project";
 
 const ProjectContext = createContext();
@@ -59,6 +59,14 @@ const ProjectContextProvider = (props) => {
     }
   };
 
+  const updateWorkingStatus = async (id, workingStatus) => {
+    try {
+      await editTaskWorkingStatusById(id, workingStatus);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <ProjectContext.Provider
       value={{
@@ -66,6 +74,7 @@ const ProjectContextProvider = (props) => {
         createProject,
         loading,
         updateProject,
+        updateWorkingStatus,
       }}
     >
       {props.children}

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { delegateTaskApi } from "../../../api/project";
 import { getAllUser } from "../../../api/user";
+import { useProject } from "../../../contexts/ProjectContext";
 
 export default function TaskDetail(props) {
   const {
@@ -13,10 +14,14 @@ export default function TaskDetail(props) {
     delegateDate,
     deadLine,
     brief,
+    setShowDetail,
   } = props;
+
+  const { updateWorkingStatus } = useProject();
 
   const [users, setUsers] = useState([]);
   const [delegateTarget, setDelegateTarget] = useState("0");
+  const [status, setStatus] = useState("waiting");
 
   useEffect(() => {
     const fetchAllUser = async () => {
@@ -29,8 +34,9 @@ export default function TaskDetail(props) {
   const handleDelegateTask = async (e) => {
     try {
       e.preventDefault();
-
+      await updateWorkingStatus(id, status);
       await delegateTaskApi(delegateTarget, id);
+      setShowDetail("");
     } catch (err) {
       console.log(err);
     }
@@ -89,6 +95,7 @@ export default function TaskDetail(props) {
                   <select
                     name="user"
                     className="border-2 border-slate-300 px-2 py-1 rounded cursor-pointer"
+                    onChange={(e) => setStatus(e.target.value)}
                   >
                     <option value="waiting">WAITING</option>
                     <option value="active">ACTIVE</option>

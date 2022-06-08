@@ -108,6 +108,7 @@ export default function TaskListMain(props) {
                   delegateDate={ele.delegateDate}
                   deadLine={ele.deadLine}
                   brief={ele.brief}
+                  setShowDetail={setShowDetail}
                 />
               </div>
             ))

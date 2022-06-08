@@ -1,8 +1,11 @@
 import { MdOutlineStickyNote2 } from "react-icons/md";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 export default function TaskElement(props) {
+  const { user } = useContext(AuthContext);
   const {
     id,
     name,
@@ -35,7 +38,11 @@ export default function TaskElement(props) {
             className="p-1 hover:bg-slate-300 hover:text-slate-50 transition-all rounded"
             onClick={() => navigate(`/Projects/${projectId}/createTask/${id}`)}
           >
-            <MdOutlineStickyNote2 className="cursor-pointer" />
+            {user.position === "Manager" ? (
+              <MdOutlineStickyNote2 className="cursor-pointer" />
+            ) : (
+              ""
+            )}
           </div>
         </span>
       </div>

@@ -13,6 +13,7 @@ export default function SectionMenu(props) {
             icons={ele}
             name={props.name[idx].title}
             type={props.name[idx].type}
+            notificationBell={props.name[idx].notificationBell}
           />
         );
       })}
