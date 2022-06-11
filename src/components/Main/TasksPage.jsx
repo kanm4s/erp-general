@@ -10,6 +10,7 @@ export default function TasksPage() {
   const { user } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
   const [tasks, setTasks] = useState([]);
+  const [taskOwner, setTaskOwner] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -23,7 +24,7 @@ export default function TasksPage() {
         } else {
           setLoading(true);
           const res = await getTasksByProjectIdApi(id);
-          setTasks(res.data.tasks);
+          setTasks(res.data.allTask);
           setLoading(false);
         }
       };
@@ -49,7 +50,7 @@ export default function TasksPage() {
                 navigate("/Projects");
               }}
             >
-              {`${tasks[0]?.Project?.clientName}`}
+              {`${tasks[0]?.Task?.Project?.clientName}`}
             </span>
             {` > Tasks`}
           </div>
@@ -58,7 +59,12 @@ export default function TasksPage() {
         )}
       </h1>
       <div className="flex flex-row w-full h-full px-16 2xl:px-20 mb-20">
-        <TaskListMain tasks={tasks} loading={loading} setTasks={setTasks} />
+        <TaskListMain
+          tasks={tasks}
+          loading={loading}
+          setTasks={setTasks}
+          taskOwner={taskOwner}
+        />
       </div>
     </motion.main>
   );

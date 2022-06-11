@@ -1,3 +1,5 @@
+import dayjs from "dayjs";
+import { useEffect, useState } from "react";
 import ModelTask from "../../Modal/ModelTask";
 
 export default function TaskElement(props) {
@@ -12,6 +14,17 @@ export default function TaskElement(props) {
     handleShowModal,
     showModal,
   } = props;
+
+  const [urgent, setUrgent] = useState(false);
+
+  const currentDate = dayjs(deadline);
+  const calDate = currentDate.diff(dayjs(), "day");
+
+  useEffect(() => {
+    if (calDate <= 2) {
+      setUrgent(true);
+    }
+  }, []);
 
   return (
     <>
@@ -34,8 +47,14 @@ export default function TaskElement(props) {
           <h3 className="text-sm 2xl:text-base">Tasks: {Tasks}</h3>
           <h3 className="text-sm 2xl:text-base">Deadline: {deadline}</h3>
         </div>
-        <div className="flex justify-center rounded 2xl:rounded-lg items-center 2xl:px-4 py-1 2xl:py-2 bg-red-500 text-slate-100">
-          4 days
+        <div
+          className={`flex justify-center rounded 2xl:rounded-lg items-center 2xl:px-4 py-1 2xl:py-2 ${
+            urgent
+              ? `bg-red-500 text-slate-100`
+              : `bg-main-color text-slate-100`
+          }`}
+        >
+          {`${calDate} days`}
         </div>
       </div>
     </>

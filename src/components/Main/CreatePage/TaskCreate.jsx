@@ -17,6 +17,7 @@ export default function TaskCreate() {
   const { projectId, taskId } = useParams();
   const [task, setTask] = useState({});
   useEffect(() => {
+    console.log(taskId);
     if (taskId) {
       const fetchTaskById = async () => {
         const res = await getTaskById(taskId);
@@ -40,6 +41,8 @@ export default function TaskCreate() {
         await updateTaskByIdApi(name, taskId, deadLine, type, brief);
         navigate(`/Projects/${projectId}`);
       } else {
+        console.log("In create");
+        console.log(projectId, name, deadLine, type, brief);
         await createTaskApi(name, projectId, deadLine, type, brief);
         navigate(`/Projects/${projectId}`);
       }

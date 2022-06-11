@@ -22,6 +22,7 @@ export default function TaskDetail(props) {
   const [users, setUsers] = useState([]);
   const [delegateTarget, setDelegateTarget] = useState("0");
   const [status, setStatus] = useState("waiting");
+  const [specialNote, setSpecialNote] = useState("");
 
   useEffect(() => {
     const fetchAllUser = async () => {
@@ -34,8 +35,10 @@ export default function TaskDetail(props) {
   const handleDelegateTask = async (e) => {
     try {
       e.preventDefault();
+      if (user.position === "Manager") {
+        await delegateTaskApi(delegateTarget, id);
+      }
       await updateWorkingStatus(id, status);
-      await delegateTaskApi(delegateTarget, id);
       setShowDetail("");
     } catch (err) {
       console.log(err);
@@ -54,27 +57,35 @@ export default function TaskDetail(props) {
           <div className="min-w-[260px] flex flex-col gap-3 basis-1/3 pr-5">
             <h1 className="text-main-color font-bold">{title}</h1>
             <div>
-              {user.position === "Junior" && (
+              {user.position === "junior" && (
                 <p>{`Delegate from: ${delegateFrom}`}</p>
               )}
               <p>{`Delegate to: ${delegateTo ? delegateTo : "None"}`}</p>
               <p>{`Delegate date: ${delegateDate ? delegateDate : "None"}`}</p>
               <p>{`Deadline: ${deadLine}`}</p>
             </div>
-            {user.position === "Junior" ? (
-              <form>
+            {user.position === "junior" ? (
+              <form onSubmit={handleDelegateTask}>
                 <textarea
                   name=""
                   id=""
                   cols="30"
                   className="w-full resize-none border-2 border-slate-300 focus:border-teal-500 rounded outline-none p-2 text-sm h-32"
+                  onChange={(e) => setSpecialNote(e.target.value)}
+                  value={specialNote}
                 ></textarea>
-                <div className="container flex gap-2">
-                  <button className="w-32 border-2 border-slate-300 hover:border-teal-500 bg-white hover:bg-teal-500 px-2 py-1 text-teal-900 hover:text-teal-50 rounded transition-all">
-                    Add note
-                  </button>
-                  <button className="w-full border-2 border-slate-300 hover:border-teal-500 bg-white hover:bg-teal-500 px-2 py-1 text-teal-900 hover:text-teal-50 rounded transition-all">
-                    Done Task
+                <div className="container grid grid-cols-2 gap-2">
+                  <select
+                    name="user"
+                    className="border-2 border-slate-300 px-2 py-1 rounded cursor-pointer"
+                    onChange={(e) => setStatus(e.target.value)}
+                  >
+                    <option value="waiting">WAITING</option>
+                    <option value="active">ACTIVE</option>
+                    <option value="done">DONE</option>
+                  </select>
+                  <button className="border-2 border-slate-300 hover:border-teal-500 bg-white hover:bg-teal-500 px-2 py-1 text-teal-900 hover:text-teal-50 rounded transition-all">
+                    Submit
                   </button>
                 </div>
               </form>

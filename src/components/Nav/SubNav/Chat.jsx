@@ -14,8 +14,8 @@ export default function Chat(props) {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    socket.on("message", ({ name, chat }) => {
-      setChatContent([{ name, chat }, ...chatContent]);
+    socket.on("message", ({ userId, chat }) => {
+      setChatContent([{ senderId: userId, chat }, ...chatContent]);
     });
   }, [chatContent]);
 
@@ -24,7 +24,7 @@ export default function Chat(props) {
     await sendMessage(id, message);
 
     socket.emit("message", {
-      name: user.firstName,
+      userId: user.id,
       chat: message,
     });
     setMessage("");

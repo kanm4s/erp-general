@@ -26,6 +26,10 @@ export function getAllProjectApi() {
   return axios.get("/projects");
 }
 
+export function getProjectProgressApi() {
+  return axios.get("/projects/getProjectProgress");
+}
+
 export function getProjectByIdApi(id) {
   return axios.get(`/projects/${id}`);
 }
@@ -54,6 +58,10 @@ export function getTaskById(id) {
 
 export function getAllTasksApi() {
   return axios.get("/projects/tasks");
+}
+
+export function getTaskReceiverByUserIdApi() {
+  return axios.get("/projects/tasks/getTaskByUserId");
 }
 
 export function getTasksByProjectIdApi(projectId) {

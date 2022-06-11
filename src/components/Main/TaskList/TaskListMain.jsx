@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { HiOutlineFilter } from "react-icons/hi";
 import { IoIosArrowDown } from "react-icons/io";
+import dayjs from "dayjs";
 
 import TaskElement from "./TaskElement";
 import TaskDetail from "./TaskDetail";
@@ -33,11 +34,15 @@ export default function TaskListMain(props) {
     setSortDateDesc(!sortDateDesc);
     if (sortDateDesc) {
       setTasks(
-        tasks.sort((a, b) => new Date(b.deadLine) - new Date(a.deadLine))
+        tasks.sort(
+          (a, b) => new Date(b.Task.deadLine) - new Date(a.Task.deadLine)
+        )
       );
     } else {
       setTasks(
-        tasks.sort((a, b) => new Date(a.deadLine) - new Date(b.deadLine))
+        tasks.sort(
+          (a, b) => new Date(a.Task.deadLine) - new Date(b.Task.deadLine)
+        )
       );
     }
   };
@@ -81,7 +86,7 @@ export default function TaskListMain(props) {
         ? currentTasks
             .filter((element) => {
               if (showDetail) {
-                return element.id === showDetail;
+                return element.Task.id === showDetail;
               } else {
                 return "";
               }
@@ -90,24 +95,24 @@ export default function TaskListMain(props) {
               <div>
                 <TaskElement
                   key={idx}
-                  id={ele.id}
-                  name={ele.name}
-                  type={ele.type}
-                  delegateTo={ele.delegateTo}
-                  deadLine={ele.deadLine}
+                  id={ele.Task.id}
+                  name={ele.Task.name}
+                  type={ele.Task.type}
+                  delegateTo={ele.receiver?.firstName}
+                  deadLine={ele.Task.deadLine}
                   showDetailFunction={handleShowDetail}
                   projectId={projectId}
                 />
                 <TaskDetail
                   key={idx}
-                  id={ele.id}
+                  id={ele.Task.id}
                   user={user}
-                  title={ele.name}
+                  title={ele.Task.name}
                   delegateFrom={ele.delegateFrom}
-                  delegateTo={ele.delegateTo}
-                  delegateDate={ele.delegateDate}
-                  deadLine={ele.deadLine}
-                  brief={ele.brief}
+                  delegateTo={ele.receiver?.firstName}
+                  delegateDate={dayjs(ele.updatedAt).format("YYYY-MM-DD")}
+                  deadLine={ele.Task.deadLine}
+                  brief={ele.Task.brief}
                   setShowDetail={setShowDetail}
                 />
               </div>
@@ -115,11 +120,11 @@ export default function TaskListMain(props) {
         : currentTasks?.map((ele, idx) => (
             <TaskElement
               key={idx}
-              id={ele.id}
-              name={ele.name}
-              type={ele.type}
-              delegateTo={ele.delegateTo}
-              deadLine={ele.deadLine}
+              id={ele.Task.id}
+              name={ele.Task.name}
+              type={ele.Task.type}
+              delegateTo={ele.receiver?.firstName}
+              deadLine={ele.Task.deadLine}
               showDetailFunction={handleShowDetail}
               projectId={projectId}
             />

@@ -23,3 +23,19 @@ export function getAllMessage(id) {
 export function sendMessageApi(id, content) {
   return axios.post(`/communicates/sendMessage/${id}`, { content });
 }
+
+export function createPostItApi() {
+  return axios.post("/communicates/createPostIt");
+}
+
+export function getAllPostItApi() {
+  return axios.get("/communicates/postIt");
+}
+
+export function editPostItApi(id, content) {
+  return axios.patch(`/communicates/editPostIt/${id}`, { content });
+}
+
+export function deletePostItApi(id) {
+  return axios.delete(`/communicates/postIt/${id}`);
+}
