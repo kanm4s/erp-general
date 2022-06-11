@@ -33,7 +33,7 @@ export default function ReplyEmail(props) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <div className="w-full h-fit min-w-[800px] max-w-[1000px] px-3 py-5 rounded-lg bg-white overflow-hidden">
+      <div className="w-full h-fit min-w-[800px] max-w-[1000px] px-3 py-5 rounded-lg bg-white dark:bg-gray-700 overflow-hidden">
         <Form
           schema={schema}
           onSubmit={onSubmit}

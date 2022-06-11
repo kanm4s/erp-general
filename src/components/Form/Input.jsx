@@ -14,7 +14,7 @@ function Input({ name, type, editPrev }) {
         render={({ field: { onChange, value } }) => {
           return (
             <div className="grid grid-cols-5 gap-1">
-              <label htmlFor={name} className="pr-5 text-lg">
+              <label htmlFor={name} className="pr-5 text-lg dark:text-gray-100">
                 {name}
               </label>
               <input
@@ -22,7 +22,7 @@ function Input({ name, type, editPrev }) {
                 name={name}
                 onChange={onChange}
                 value={value}
-                className="border-2 border-slate-300 focus:border-teal-500 rounded outline-none px-[5px] py-[3px] text-sm col-start-3 col-span-4"
+                className="border-2 border-slate-300 dark:bg-gray-700 dark:text-gray-100 focus:border-teal-500 rounded outline-none px-[5px] py-[3px] text-sm col-start-3 col-span-4"
               />
             </div>
           );

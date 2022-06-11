@@ -13,17 +13,22 @@ export default function SubMenu(props) {
   const navigate = useNavigate();
   return (
     <div
-      className="menu-item pl-8 2xl:pl-14 h-7 flex items-baseline transition ease-in-out bg-main-nav hover:text-slate-100 cursor-pointer"
-      onClick={
-        props.type === "subMenu"
-          ? () => handleShowMessage(props.name)
-          : () => {
-              navigate(props.name);
-              handleShowModal(props.name);
-              setShowMessage(false);
-              setCheckSubMenuType("");
-            }
-      }
+      className="menu-item pl-8 2xl:pl-14 h-7 flex items-baseline transition ease-in-out bg-main-nav hover:text-slate-100 dark:bg-gray-800 dark:hover:bg-gray-100 dark:hover:text-gray-800 cursor-pointer"
+      onClick={() => {
+        if (props.name === "Dark Mode") {
+          console.log("dark mode");
+          document.documentElement.classList.toggle("dark");
+        } else {
+          if (props.type === "subMenu") {
+            handleShowMessage(props.name);
+          } else {
+            navigate(props.name);
+            handleShowModal(props.name);
+            setShowMessage(false);
+            setCheckSubMenuType("");
+          }
+        }
+      }}
     >
       {props.icons}
       <h1 className="text-base pl-3">{props.name}</h1>

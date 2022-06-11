@@ -13,7 +13,7 @@ function TextArea({ name, type }) {
         render={({ field: { onChange, value } }) => {
           return (
             <>
-              <label htmlFor={name} className="pr-5 text-lg">
+              <label htmlFor={name} className="pr-5 text-lg dark:text-gray-100">
                 {name}
               </label>
               <div className="grid grid-cols-5 gap-1">
@@ -22,7 +22,7 @@ function TextArea({ name, type }) {
                   name={name}
                   onChange={onChange}
                   value={value}
-                  className="border-2 border-slate-300 focus:border-teal-500 rounded outline-none px-[5px] py-[5px] text-sm col-start-1 col-span-5"
+                  className="border-2 border-slate-300 dark:bg-gray-700 dark:text-gray-100 focus:border-teal-500 rounded outline-none px-[5px] py-[5px] text-sm col-start-1 col-span-5"
                 />
               </div>
             </>

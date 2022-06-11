@@ -1,5 +1,6 @@
 import SidePostIt from "./SidePostIt";
 import { IoIosAddCircleOutline } from "react-icons/io";
+import { FiChevronsRight } from "react-icons/fi";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
 import {
@@ -59,30 +60,33 @@ export default function MainSidePostIt() {
   };
 
   return (
-    <>
-      <aside className="hidden absolute right-0 w-56 h-screen py-8 2xl:py-16 px-10 xl:flex flex-col items-end gap-5 2xl:gap-5 bg-neutral-50">
-        <button className="h-8 2xl:text-xl text-zinc-500" onClick={addPostIt}>
+    <aside className="hidden absolute right-0 w-56 h-screen py-8 2xl:py-16 px-10 xl:flex flex-col items-end gap-5 2xl:gap-5 bg-neutral-50 dark:bg-gray-800">
+      <div className="flex items-center gap-3">
+        <div className="flex items-center gap-1 animate-bounce dark:text-gray-100">
+          <span>Add note</span>
+          <FiChevronsRight />
+        </div>
+        <button
+          className="h-8 2xl:text-xl text-zinc-500 dark:text-gray-100"
+          onClick={addPostIt}
+        >
           <IoIosAddCircleOutline />
         </button>
+      </div>
 
-        {postIt ? (
-          postIt.map((ele) => (
-            <SidePostIt
-              key={ele.id}
-              id={ele.id}
-              content={ele.content}
-              editPostIt={editPostIt}
-              deletePostIt={deletePostIt}
-            />
-          ))
-        ) : (
-          <></>
-        )}
-        {/* <SidePostIt />
-        <SidePostIt />
-        <SidePostIt /> */}
-        {/* <SidePostIt /> */}
-      </aside>
-    </>
+      {postIt ? (
+        postIt.map((ele) => (
+          <SidePostIt
+            key={ele.id}
+            id={ele.id}
+            content={ele.content}
+            editPostIt={editPostIt}
+            deletePostIt={deletePostIt}
+          />
+        ))
+      ) : (
+        <></>
+      )}
+    </aside>
   );
 }

@@ -31,7 +31,7 @@ export default function Chat(props) {
   };
 
   return (
-    <div className="flex flex-col w-full h-68 rounded bg-invert-color text-main-color font-bold shadow-md px-5 py-3">
+    <div className="flex flex-col w-full h-68 rounded bg-invert-color text-main-color dark:text-gray-100 dark:bg-gray-700 font-bold shadow-md px-5 py-3">
       <div className="h-full">
         <div className="flex items-center justify-between pb-1 border-b-2 border-slate-300 border-dashed mb-2">
           <span className="">{receiver}</span>
@@ -52,16 +52,16 @@ export default function Chat(props) {
           })}
         </div>
         <form
-          className="flex gap-2 items-center mt-2 border-t-2 border-slate-300 border-dashed pt-2"
+          className="flex gap-1 items-center mt-2 border-t-2 border-slate-300 border-dashed pt-2"
           onSubmit={handleSubmit}
         >
           <input
-            className="flex text-base border-2 border-slate-300 focus:outline-none focus:border-slate-500 rounded-xl pl-3"
+            className="flex text-base border-2 border-slate-300 focus:outline-none focus:border-slate-500 dark:text-gray-700 rounded-xl pl-3"
             placeholder="Aa"
             onChange={(e) => setMessage(e.target.value)}
             value={message}
           />
-          <button>
+          <button className="p-1 rounded hover:bg-slate-300 hover:text-slate-700">
             <BiSend className="text-xl cursor-pointer" />
           </button>
         </form>

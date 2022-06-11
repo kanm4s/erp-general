@@ -9,8 +9,8 @@ export default function TaskReminder() {
 
   return (
     <>
-      <div className="w-2/5 px-7 py-5 mt-3 max-h-[500px] overflow-y-auto 2xl:mt-10 mb-16 2xl:mb-36 rounded-lg shadow-2xl bg-white overflow-hidden">
-        <div className="text-xl 2xl:text-3xl h-6 2xl:h-10 font-bold text-main-color cursor-default overflow-hidden">
+      <div className="w-2/5 px-7 py-5 mt-3 max-h-[500px] overflow-y-auto 2xl:mt-10 mb-16 2xl:mb-36 rounded-lg shadow-2xl bg-white overflow-hidden dark:bg-gray-700">
+        <div className="text-xl 2xl:text-3xl h-6 2xl:h-10 font-bold text-main-color dark:text-gray-100 cursor-default overflow-hidden">
           <h2 className="">Tasks</h2>
         </div>
 

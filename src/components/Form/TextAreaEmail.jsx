@@ -18,7 +18,7 @@ function TextAreaEmail({ name, type }) {
                 name={name}
                 onChange={onChange}
                 value={value}
-                className="border-none focus:outline-none rounded outline-none px-[10px] py-[10px] text-sm w-full h-full resize-y max-h-80"
+                className="border-none focus:outline-none dark:bg-gray-700 dark:text-gray-100 rounded outline-none px-[10px] py-[10px] text-sm w-full h-full resize-y max-h-80"
               />
             </>
           );

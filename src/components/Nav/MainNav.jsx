@@ -15,9 +15,9 @@ export default function MainNav() {
   const navigate = useNavigate();
   return (
     <div className="absolute flex">
-      <nav className="relative w-48 2xl:w-52 z-20 bg-neutral-100 h-screen py-8 2xl:py-16 flex flex-col justify-between">
+      <nav className="relative w-48 2xl:w-52 z-20 bg-neutral-100 dark:bg-gray-800 h-screen py-8 2xl:py-16 flex flex-col justify-between">
         <h1
-          className="text-4xl font-bold h-16 text-main-color cursor-pointer pl-6 2xl:pl-10"
+          className="text-4xl font-bold h-16 text-main-color dark:text-gray-100 cursor-pointer pl-6 2xl:pl-10"
           onClick={() => navigate("/Home")}
         >
           ERP
@@ -64,12 +64,12 @@ export default function MainNav() {
         </div>
         <div className="relative">
           {showMenuProfile ? (
-            <div className="absolute  bottom-1 w-full cursor-pointer">
-              <h2 className="px-6 py-1 text-zinc-500 hover:text-zinc-100 transition ease-in-out bg-main-nav">
+            <div className="absolute bottom-1 w-full cursor-pointer">
+              <h2 className="px-6 py-1 text-zinc-500 dark:text-gray-100 hover:text-zinc-100 transition ease-in-out bg-main-nav dark:bg-gray-800 dark:hover:bg-gray-100 dark:hover:text-gray-800">
                 Edit profile
               </h2>
               <h2
-                className="px-6 py-1 text-zinc-500 hover:text-zinc-100 transition ease-in-out bg-main-nav"
+                className="px-6 py-1 text-zinc-500 dark:text-gray-100 hover:text-zinc-100 transition ease-in-out bg-main-nav dark:bg-gray-800 dark:hover:bg-gray-100 dark:hover:text-gray-800"
                 onClick={logout}
               >
                 Logout
@@ -89,10 +89,12 @@ export default function MainNav() {
             className="w-12 h-12 rounded-full"
           />
           <div className="relative top-1 cursor-pointer">
-            <h1 className="text-base font-bold text-zinc-700">
+            <h1 className="text-base font-bold text-zinc-700 dark:text-gray-100">
               {user.firstName}
             </h1>
-            <p className="relative bottom-2 text-zinc-400">{user.position}</p>
+            <p className="relative bottom-2 text-zinc-400 dark:text-gray-500">
+              {user.position}
+            </p>
           </div>
         </div>
       </nav>

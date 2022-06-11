@@ -9,7 +9,7 @@ export default function Pagination({ itemsPerPage, totalItems, paginate }) {
         {pageNumbers.map((number) => (
           <li
             key={number}
-            className="py-1 px-3 cursor-pointer hover:bg-slate-300 hover:text-slate-50 transition-all rounded mx-1"
+            className="py-1 px-3 cursor-pointer hover:bg-slate-300 hover:text-slate-50 dark:text-slate-50 dark:hover:text-slate-700 transition-all rounded mx-1"
             onClick={() => paginate(number)}
           >
             <div>{number}</div>

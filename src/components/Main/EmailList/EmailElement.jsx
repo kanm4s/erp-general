@@ -8,7 +8,7 @@ export default function EmailElement(props) {
   const { deleteEmail } = useEmail();
   return (
     <motion.div
-      className="border-l-4 border-white hover:border-teal-500 transition-all"
+      className="border-l-4 border-white hover:border-teal-500 dark:border-gray-700 dark:hover:border-gray-100 transition-all"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -25,7 +25,7 @@ export default function EmailElement(props) {
         </div>
         <span className="flex text-zinc-400 justify-end z-10 py-[8px]">
           <div
-            className="p-1 hover:bg-slate-300 hover:text-slate-50 transition-all rounded"
+            className="p-1 hover:bg-slate-300 dark:hover:text-gray-700 hover:text-slate-50 transition-all rounded"
             onClick={() => handleShowDetail(id)}
           >
             <FaReply className="cursor-pointer" />

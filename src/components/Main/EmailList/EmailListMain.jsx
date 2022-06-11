@@ -34,15 +34,15 @@ export default function EmailListMain() {
   };
 
   return (
-    <div className="w-full h-fit min-w-[800px] max-w-[1000px] px-7 py-5 rounded-lg shadow-2xl bg-white overflow-hidden">
+    <div className="w-full h-fit min-w-[800px] max-w-[1000px] px-7 py-5 rounded-lg shadow-2xl bg-white dark:bg-gray-700  overflow-hidden">
       {/* Header */}
       <div className="container cursor-pointer flex px-3 border-b-2 border-slate-300 border-dashed">
         <div className="container relative right-1 grid grid-cols-4 py-[8px] 2xl:py-[18px]">
-          <span className="flex text-zinc-400">Name</span>
-          <span className="flex text-zinc-400">Subject</span>
+          <span className="flex dark:text-gray-200 text-zinc-400">Name</span>
+          <span className="flex dark:text-gray-200 text-zinc-400">Subject</span>
         </div>
         <span className="flex text-zinc-400 justify-end py-[8px] 2xl:py-[18px]">
-          <div className="p-1 hover:bg-slate-300 hover:text-slate-50 transition-all rounded">
+          <div className="p-1 hover:bg-slate-300 hover:text-slate-50 dark:hover:text-gray-700  transition-all rounded">
             <HiOutlineFilter className="cursor-pointer" />
           </div>
         </span>
@@ -92,12 +92,14 @@ export default function EmailListMain() {
       {/* pagination */}
       {!showSentEmail ? (
         <div className="flex justify-between items-center p-1 mt-2 mr-1">
-          <IoCreateOutline
-            className="text-lg cursor-pointer"
+          <div
+            className="p-1 hover:bg-slate-300 text-slate-500 hover:text-slate-50 dark:text-gray-50 dark:hover:text-gray-700 transition-all rounded cursor-pointer"
             onClick={() => {
               navigate("/MailBox/createEmail");
             }}
-          />
+          >
+            <IoCreateOutline className="text-lg" />
+          </div>
           <Pagination
             itemsPerPage={emailsPerPage}
             totalItems={emails.length}

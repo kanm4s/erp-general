@@ -28,16 +28,16 @@ export default function EmailCreate() {
   };
   return (
     <motion.main
-      className="relative flex flex-col px-56 h-screen grow gap-1 bg-neutral-50"
+      className="relative flex flex-col px-56 h-screen grow gap-1 bg-neutral-50 dark:bg-gray-800"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <h1 className="text-4xl 2xl:text-6xl text-main-color font-bold cursor-default px-14 2xl:px-20 pt-9 mt-10 mb-6">
+      <h1 className="text-4xl 2xl:text-6xl text-main-color dark:text-gray-100 font-bold cursor-default px-14 2xl:px-20 pt-9 mt-10 mb-6">
         Create Email
       </h1>
       <div className="flex flex-row w-full h-full px-16 2xl:px-20 mb-20">
-        <div className="w-full h-fit min-w-[800px] max-w-[1000px] px-7 py-5 rounded-lg shadow-2xl bg-white overflow-hidden">
+        <div className="w-full h-fit min-w-[800px] max-w-[1000px] px-7 py-5 rounded-lg shadow-2xl bg-white dark:bg-gray-700 overflow-hidden">
           <Form schema={schema} onSubmit={onSubmit}>
             <div className="flex flex-col gap-3">
               <div className="flex flex-col gap-3 border-b-2 border-slate-300 border-dashed pb-3">

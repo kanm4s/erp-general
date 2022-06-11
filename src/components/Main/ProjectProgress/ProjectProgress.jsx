@@ -4,14 +4,18 @@ import ProjectProgressElement from "./ProjectProgressElement";
 export default function ProjectProgress() {
   const { projectProgress } = useProject();
   return (
-    <div className="w-4/5 px-7 max-h-[350px] overflow-y-auto py-5 mt-3 2xl:mt-10 rounded-lg shadow-2xl bg-white overflow-hidden">
-      <h2 className="text-xl 2xl:text-3xl h-10 font-bold text-main-color cursor-default">
+    <div className="w-4/5 px-7 max-h-[350px] overflow-y-auto py-5 mt-3 2xl:mt-10 rounded-lg shadow-2xl bg-white dark:bg-gray-700 overflow-hidden">
+      <h2 className="text-xl 2xl:text-3xl h-10 font-bold text-main-color dark:text-gray-100 cursor-default">
         Project Progression
       </h2>
       <div className="flex py-3">
-        <span className="flex basis-1/4 text-zinc-400">Name</span>
-        <span className="flex basis-1/2 text-zinc-400">Progress</span>
-        <span className="flex basis-1/5 justify-end text-zinc-400">
+        <span className="flex basis-1/4 text-zinc-400 dark:text-gray-100">
+          Name
+        </span>
+        <span className="flex basis-1/2 text-zinc-400 dark:text-gray-100">
+          Progress
+        </span>
+        <span className="flex basis-1/5 justify-end text-zinc-400 dark:text-gray-100">
           Deadline
         </span>
       </div>

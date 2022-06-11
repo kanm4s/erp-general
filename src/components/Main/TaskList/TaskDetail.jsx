@@ -56,7 +56,7 @@ export default function TaskDetail(props) {
         >
           <div className="min-w-[260px] flex flex-col gap-3 basis-1/3 pr-5">
             <h1 className="text-main-color font-bold">{title}</h1>
-            <div>
+            <div className="dark:text-gray-100">
               {user.position === "junior" && (
                 <p>{`Delegate from: ${delegateFrom}`}</p>
               )}
@@ -123,7 +123,7 @@ export default function TaskDetail(props) {
             <h1 className="text-main-color font-bold">Brief from client</h1>
             <div className="flex grid grid-cols-2">
               {/* <span>Brief version: {brief?.version}</span> */}
-              <span className="col-span-2">{brief}</span>
+              <span className="col-span-2 dark:text-gray-100">{brief}</span>
             </div>
             <p className="h-full">{brief?.content}</p>
           </div>
