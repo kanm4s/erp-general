@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { BiMessageSquareDots } from "react-icons/bi";
 import { useChat } from "../../../contexts/ChatContext";
 import { NavToggle } from "../../../contexts/NavContext";
@@ -11,12 +11,6 @@ export default function EmployeeElement(props) {
   const { handleShowMessage } = useContext(NavToggle);
 
   const { setReceiver, room, joinRoom } = useChat();
-
-  // useEffect(() => {
-  //   socket.on("response_join_root", (res) => {
-  //     console.log(res);
-  //   });
-  // }, []);
 
   return (
     <motion.div

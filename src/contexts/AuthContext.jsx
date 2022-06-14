@@ -36,6 +36,7 @@ const AuthContextProvider = (props) => {
       }
     };
     fetchMe();
+    // eslint-disable-next-line
   }, []);
 
   const login = async (userName, password) => {

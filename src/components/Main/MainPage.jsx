@@ -5,6 +5,7 @@ import { ModalTaskContext } from "../../contexts/ModalContext";
 import ProjectOverview from "./ProjectOverview/ProjectOverview";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useContext } from "react";
+import ProjectProgressManager from "./ProjectProgress/ProjectProgressManager";
 
 export default function MainPage() {
   const { user } = useContext(AuthContext);
@@ -23,8 +24,16 @@ export default function MainPage() {
       </div>
       <div className="flex flex-row w-full h-full px-16 2xl:px-20 gap-14 mb-5">
         <ModalTaskContext>
-          <TaskReminder />
-          <ProjectProgress />
+          {user.position === "Manager" ? (
+            <ProjectProgressManager />
+          ) : (
+            <>
+              <TaskReminder />
+              <ProjectProgress />
+            </>
+          )}
+          {/* <TaskReminder />
+          <ProjectProgress /> */}
         </ModalTaskContext>
       </div>
     </motion.main>

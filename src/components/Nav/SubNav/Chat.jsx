@@ -21,6 +21,7 @@ export default function Chat(props) {
         ...chatContent,
       ]);
     });
+    // eslint-disable-next-line
   }, [chatContent]);
 
   const handleSubmit = async (e) => {

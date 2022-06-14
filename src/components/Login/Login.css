@@ -44,7 +44,6 @@
     rgba(91, 177, 172, 1) 79%,
     rgba(112, 255, 198, 0.4542191876750701) 100%
   );
-  overflow: hidden;
 }
 
 .all-form {
@@ -56,7 +55,6 @@
   transition: all 1s ease-in-out;
   transition-delay: 0.5s;
   position: relative;
-  overflow: hidden;
 }
 
 .all-form-move-left {
@@ -267,7 +265,6 @@
       rgba(91, 177, 172, 1) 79%,
       rgba(112, 255, 198, 0.4542191876750701) 100%
     );
-    overflow: hidden;
   }
 
   .form-container {

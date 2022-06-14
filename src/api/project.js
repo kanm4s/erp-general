@@ -22,6 +22,15 @@ export function editTaskWorkingStatusById(id, workingStatus) {
   return axios.patch(`/projects/tasks/wokingStatus/${id}`, { workingStatus });
 }
 
+export function addSpecialNoteByIdApi(id, specialNote) {
+  return axios.patch(`/projects/tasks/addSpecialNoteById/${id}`, {
+    specialNote,
+  });
+}
+export function getSpecialNoteByIdApi(id) {
+  return axios.get(`/projects/tasks/addSpecialNoteById/${id}`);
+}
+
 export function getAllProjectApi() {
   return axios.get("/projects");
 }
@@ -77,4 +86,8 @@ export function getAvailableTasksApi() {
 }
 export function getAllWorkingTasksApi() {
   return axios.get("projects/getAllWorkingTasks");
+}
+
+export function getProgressDetailByProject() {
+  return axios.get("projects/getProgressDetailByProject");
 }

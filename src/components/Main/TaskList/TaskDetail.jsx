@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { delegateTaskApi } from "../../../api/project";
+import { delegateTaskApi, getSpecialNoteByIdApi } from "../../../api/project";
 import { getAllUser } from "../../../api/user";
 import { useProject } from "../../../contexts/ProjectContext";
 
@@ -15,21 +15,26 @@ export default function TaskDetail(props) {
     deadLine,
     brief,
     setShowDetail,
+    workingStatus,
   } = props;
 
   const { updateWorkingStatus } = useProject();
 
   const [users, setUsers] = useState([]);
-  const [delegateTarget, setDelegateTarget] = useState("0");
+  const [delegateTarget, setDelegateTarget] = useState("1");
   const [status, setStatus] = useState("waiting");
   const [specialNote, setSpecialNote] = useState("");
 
   useEffect(() => {
     const fetchAllUser = async () => {
       const res = await getAllUser();
+      const resSpecialNote = await getSpecialNoteByIdApi(id);
       setUsers(res.data.Users);
+      setSpecialNote(resSpecialNote.data.specialNote.noteDetail);
+      setStatus(workingStatus);
     };
     fetchAllUser();
+    // eslint-disable-next-line
   }, []);
 
   const handleDelegateTask = async (e) => {
@@ -38,7 +43,7 @@ export default function TaskDetail(props) {
       if (user.position === "Manager") {
         await delegateTaskApi(delegateTarget, id);
       }
-      await updateWorkingStatus(id, status);
+      await updateWorkingStatus(id, status, specialNote);
       setShowDetail("");
     } catch (err) {
       console.log(err);
@@ -82,6 +87,7 @@ export default function TaskDetail(props) {
                   >
                     <option value="waiting">WAITING</option>
                     <option value="active">ACTIVE</option>
+                    <option value="holding">HOLDING</option>
                     <option value="done">DONE</option>
                   </select>
                   <button className="border-2 border-slate-300 hover:border-teal-500 bg-white hover:bg-teal-500 px-2 py-1 text-teal-900 hover:text-teal-50 rounded transition-all">
@@ -110,6 +116,7 @@ export default function TaskDetail(props) {
                   >
                     <option value="waiting">WAITING</option>
                     <option value="active">ACTIVE</option>
+                    <option value="holding">HOLDING</option>
                     <option value="done">DONE</option>
                   </select>
                   <button className="col-span-2 border-2 border-slate-300 hover:border-teal-500 bg-white hover:bg-teal-500 px-2 py-1 text-teal-900 hover:text-teal-50 rounded transition-all">

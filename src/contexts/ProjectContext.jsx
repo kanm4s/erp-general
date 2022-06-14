@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import {
+  addSpecialNoteByIdApi,
   createProjectApi,
   editTaskWorkingStatusById,
   getAllProjectApi,
@@ -21,7 +22,6 @@ const ProjectContextProvider = (props) => {
     try {
       setLoading(true);
       const res = await getAllProjectApi();
-
       setProject(res.data.allProject);
       setLoading(false);
     } catch (err) {
@@ -83,9 +83,10 @@ const ProjectContextProvider = (props) => {
     }
   };
 
-  const updateWorkingStatus = async (id, workingStatus) => {
+  const updateWorkingStatus = async (id, workingStatus, specialNote) => {
     try {
       await editTaskWorkingStatusById(id, workingStatus);
+      await addSpecialNoteByIdApi(id, specialNote);
       await fetchProject();
       await getProjectProgress();
       await getTaskReceiverByUserId();

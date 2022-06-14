@@ -1,14 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { HiOutlineFilter } from "react-icons/hi";
 import { IoCreateOutline } from "react-icons/io5";
-import { useNavigate } from "react-router-dom";
 import { useEmail } from "../../../contexts/EmailContext";
 import Pagination from "../../utils/Pagination";
 import ReplyEmail from "../CreatePage/ReplyEmail";
-
-// import TaskElement from "./TaskElement";
 import EmailElement from "./EmailElement";
-// import TaskDetail from "./TaskDetail";
+import { v4 as uuidv4 } from "uuid";
 
 export default function EmailListMain() {
   const { emails, loading } = useEmail();
@@ -59,10 +57,10 @@ export default function EmailListMain() {
                 return "";
               }
             })
-            .map((ele, idx) => (
+            .map((ele) => (
               <div>
                 <EmailElement
-                  key={idx}
+                  key={uuidv4()}
                   id={ele.id}
                   sender={ele.senderEmailBox.firstName}
                   subject={ele.subject}
@@ -70,6 +68,7 @@ export default function EmailListMain() {
                   handleShowDetail={handleShowDetail}
                 />
                 <ReplyEmail
+                  key={uuidv4()}
                   sender={ele.senderEmailBox.email}
                   content={ele.content}
                   subject={ele.subject}
@@ -77,9 +76,9 @@ export default function EmailListMain() {
                 />
               </div>
             ))
-        : currentEmails.map((ele, idx) => (
+        : currentEmails.map((ele) => (
             <EmailElement
-              key={idx}
+              key={uuidv4()}
               id={ele.id}
               sender={ele.senderEmailBox.firstName}
               subject={ele.subject}

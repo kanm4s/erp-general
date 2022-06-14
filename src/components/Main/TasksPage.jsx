@@ -1,19 +1,24 @@
 import TaskListMain from "./TaskList/TaskListMain";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { getAllTasksApi, getTasksByProjectIdApi } from "../../api/project";
+import {
+  getAllTasksApi,
+  getProjectByIdApi,
+  getTasksByProjectIdApi,
+} from "../../api/project";
 import { useNavigate, useParams } from "react-router-dom";
 
 export default function TasksPage() {
   const { projectId } = useParams();
   const [loading, setLoading] = useState(false);
+  const [project, setProject] = useState([]);
   const [tasks, setTasks] = useState([]);
   const [taskOwner] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    try {
-      const fetchTask = async (id) => {
+    const fetchTask = async (id) => {
+      try {
         if (!id) {
           setLoading(true);
           const res = await getAllTasksApi();
@@ -22,14 +27,16 @@ export default function TasksPage() {
         } else {
           setLoading(true);
           const res = await getTasksByProjectIdApi(id);
+          const project = await getProjectByIdApi(id);
+          setProject(project.data.project);
           setTasks(res.data.allTask);
           setLoading(false);
         }
-      };
-      fetchTask(projectId);
-    } catch (err) {
-      console.log(err);
-    }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchTask(projectId);
   }, [projectId]);
 
   return (
@@ -48,7 +55,7 @@ export default function TasksPage() {
                 navigate("/Projects");
               }}
             >
-              {`${tasks[0]?.Task?.Project?.clientName}`}
+              {`${project.name}`}
             </span>
             {` > Tasks`}
           </div>

@@ -14,6 +14,7 @@ export default function TaskElement(props) {
     deadLine,
     showDetailFunction,
     projectId,
+    workingStatus,
   } = props;
   const navigate = useNavigate();
   return (
@@ -32,6 +33,7 @@ export default function TaskElement(props) {
           <span className="flex text-zinc-400">{type}</span>
           <span className="flex text-main-color gap-2">{delegateTo}</span>
           <span className="flex text-zinc-400 gap-2">{deadLine}</span>
+          <span className="flex text-zinc-400 gap-2">{workingStatus}</span>
         </div>
         <span className="flex text-zinc-400 justify-end z-10 py-[8px]">
           <div

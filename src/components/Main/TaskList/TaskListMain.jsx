@@ -47,7 +47,6 @@ export default function TaskListMain(props) {
       );
     }
   };
-
   const handleShowDetail = (id) => {
     if (showDetail === "") {
       setShowDetail(id);
@@ -55,6 +54,7 @@ export default function TaskListMain(props) {
       setShowDetail("");
     }
   };
+  console.log(currentTasks);
 
   return (
     <div className="w-full h-fit min-w-[800px] max-w-[1000px] px-7 py-5 rounded-lg shadow-2xl bg-white dark:bg-gray-700 overflow-hidden">
@@ -74,6 +74,9 @@ export default function TaskListMain(props) {
             >
               <IoIosArrowDown className="cursor-pointer" />
             </div>
+          </span>
+          <span className="flex dark:text-gray-200 text-zinc-400 gap-2">
+            Status
           </span>
         </div>
         <span className="flex text-zinc-400 justify-end py-[8px] 2xl:py-[18px]">
@@ -105,18 +108,20 @@ export default function TaskListMain(props) {
                   deadLine={ele.Task.deadLine}
                   showDetailFunction={handleShowDetail}
                   projectId={projectId}
+                  workingStatus={ele.Task.workingStatus}
                 />
                 <TaskDetail
                   key={uuidv4()}
                   id={ele.Task.id}
                   user={user}
                   title={ele.Task.name}
-                  delegateFrom={ele.delegateFrom}
+                  delegateFrom={ele.senderTaskOwner?.firstName}
                   delegateTo={ele.receiverTaskOwner?.firstName}
                   delegateDate={dayjs(ele.updatedAt).format("YYYY-MM-DD")}
                   deadLine={ele.Task.deadLine}
                   brief={ele.Task.brief}
                   setShowDetail={setShowDetail}
+                  workingStatus={ele.Task.workingStatus}
                 />
               </div>
             ))
@@ -130,6 +135,7 @@ export default function TaskListMain(props) {
               deadLine={ele.Task.deadLine}
               showDetailFunction={handleShowDetail}
               projectId={projectId}
+              workingStatus={ele.Task.workingStatus}
             />
           ))}
 
