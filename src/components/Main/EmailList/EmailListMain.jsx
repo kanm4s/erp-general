@@ -64,13 +64,13 @@ export default function EmailListMain() {
                 <EmailElement
                   key={idx}
                   id={ele.id}
-                  sender={ele.sender.firstName}
+                  sender={ele.senderEmailBox.firstName}
                   subject={ele.subject}
                   content={ele.content}
                   handleShowDetail={handleShowDetail}
                 />
                 <ReplyEmail
-                  sender={ele.sender.email}
+                  sender={ele.senderEmailBox.email}
                   content={ele.content}
                   subject={ele.subject}
                   setShowSentEmail={setShowSentEmail}
@@ -81,7 +81,7 @@ export default function EmailListMain() {
             <EmailElement
               key={idx}
               id={ele.id}
-              sender={ele.sender.firstName}
+              sender={ele.senderEmailBox.firstName}
               subject={ele.subject}
               content={ele.content}
               handleShowDetail={handleShowDetail}

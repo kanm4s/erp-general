@@ -9,13 +9,17 @@ import { useChat } from "../../../contexts/ChatContext";
 export default function Chat(props) {
   const { id, receiver } = props;
   const { user } = useContext(AuthContext);
-  const { chatContent, setChatContent, setReceiver, sendMessage } = useChat();
+  const { chatContent, setChatContent, setReceiver, sendMessage, room } =
+    useChat();
 
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    socket.on("message", ({ userId, chat }) => {
-      setChatContent([{ senderId: userId, chat }, ...chatContent]);
+    socket.on("messageResponse", ({ userId, receiverName, chat }) => {
+      setChatContent([
+        { senderId: userId, receiverName, chat },
+        ...chatContent,
+      ]);
     });
   }, [chatContent]);
 
@@ -25,13 +29,15 @@ export default function Chat(props) {
 
     socket.emit("message", {
       userId: user.id,
+      receiverName: receiver,
       chat: message,
+      room,
     });
     setMessage("");
   };
 
   return (
-    <div className="flex flex-col w-full h-68 rounded bg-invert-color text-main-color dark:text-gray-100 dark:bg-gray-700 font-bold shadow-md px-5 py-3">
+    <div className="flex flex-col w-full h-68 rounded bg-invert-color text-main-color dark:text-gray-100 dark:bg-gray-800 font-bold shadow-md px-5 py-3">
       <div className="h-full">
         <div className="flex items-center justify-between pb-1 border-b-2 border-slate-300 border-dashed mb-2">
           <span className="">{receiver}</span>

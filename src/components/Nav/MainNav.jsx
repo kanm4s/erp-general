@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function MainNav() {
   const [showMenuProfile, setShowMenuProfile] = useState(false);
-  const [notificationBell, setNotificationBell] = useState(false);
+  const [notificationBell] = useState(false);
   const { user, logout } = useContext(AuthContext);
   const navigate = useNavigate();
   return (

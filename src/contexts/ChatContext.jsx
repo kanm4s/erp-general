@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { getAllMessage, sendMessageApi } from "../api/communicate";
+import { getAllMessage, joinRoomApi, sendMessageApi } from "../api/communicate";
 
 const ChatContext = createContext();
 
@@ -7,12 +7,22 @@ export default function ChatContextProvider(props) {
   const [chat] = useState([]);
   const [chatContent, setChatContent] = useState([]);
   const [receiver, setReceiver] = useState({});
+  const [room, setRoom] = useState("");
 
   const fetchChat = async (id) => {
     try {
       const res = await getAllMessage(id);
       console.log(res.data);
       setChatContent(res.data.allMessage);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const joinRoom = async (id) => {
+    try {
+      const res = await joinRoomApi(id);
+      setRoom(res.data.room);
     } catch (err) {
       console.log(err);
     }
@@ -42,6 +52,8 @@ export default function ChatContextProvider(props) {
         receiver,
         setReceiver,
         sendMessage,
+        joinRoom,
+        room,
       }}
     >
       {props.children}

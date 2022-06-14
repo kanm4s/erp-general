@@ -39,3 +39,7 @@ export function editPostItApi(id, content) {
 export function deletePostItApi(id) {
   return axios.delete(`/communicates/postIt/${id}`);
 }
+
+export function joinRoomApi(userId2) {
+  return axios.post("/communicates/getRoom", { userId2 });
+}

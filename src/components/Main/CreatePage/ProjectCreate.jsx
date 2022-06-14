@@ -38,7 +38,7 @@ export default function ProjectCreate() {
       };
       fetchproject();
     }
-  }, [projectId]);
+  }, [projectId, selectProjectId]);
 
   const onSubmit = async ({ projectName, clientName, date, brief }) => {
     try {

@@ -1,5 +1,6 @@
 import { useProject } from "../../../contexts/ProjectContext";
 import ProjectProgressElement from "./ProjectProgressElement";
+import { v4 as uuidv4 } from "uuid";
 
 export default function ProjectProgress() {
   const { projectProgress } = useProject();
@@ -32,6 +33,7 @@ export default function ProjectProgress() {
         if (count === 0) {
           return (
             <ProjectProgressElement
+              key={uuidv4()}
               title={ele.name}
               deadLine={ele.deadLine}
               progress={0}
@@ -43,6 +45,7 @@ export default function ProjectProgress() {
 
         return (
           <ProjectProgressElement
+            key={uuidv4()}
             title={ele.name}
             deadLine={ele.deadLine}
             progress={calProgress.toFixed(2)}

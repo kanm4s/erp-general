@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { HiOutlineFilter } from "react-icons/hi";
-import { IoCreateOutline } from "react-icons/io5";
 import { useEmployee } from "../../../contexts/EmployeeContext";
 import Pagination from "../../utils/Pagination";
 

@@ -1,8 +1,7 @@
 import SidePostIt from "./SidePostIt";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { FiChevronsRight } from "react-icons/fi";
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../contexts/AuthContext";
+import { useEffect, useState } from "react";
 import {
   createPostItApi,
   getAllPostItApi,
@@ -12,13 +11,11 @@ import {
 import { v4 as uuidv4 } from "uuid";
 
 export default function MainSidePostIt() {
-  const { user } = useContext(AuthContext);
   const [postIt, setPostIt] = useState([]);
 
   const fetchPostIt = async () => {
     try {
       const res = await getAllPostItApi();
-      console.log(res.data.allPostIt);
       setPostIt(res.data.allPostIt);
     } catch (err) {
       console.log(err);
@@ -50,7 +47,6 @@ export default function MainSidePostIt() {
     try {
       const clone = [...postIt];
       const index = clone.findIndex((ele) => ele.id === id);
-      console.log(index);
       clone.splice(index, 1);
       setPostIt([...clone]);
       await deletePostItApi(id);
@@ -77,7 +73,7 @@ export default function MainSidePostIt() {
       {postIt ? (
         postIt.map((ele) => (
           <SidePostIt
-            key={ele.id}
+            key={uuidv4()}
             id={ele.id}
             content={ele.content}
             editPostIt={editPostIt}

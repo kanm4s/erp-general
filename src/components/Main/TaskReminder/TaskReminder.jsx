@@ -1,7 +1,8 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { ModalTasks } from "../../../contexts/ModalContext";
 import { useProject } from "../../../contexts/ProjectContext";
 import TaskElement from "./TaskElement";
+import { v4 as uuidv4 } from "uuid";
 
 export default function TaskReminder() {
   const { showModal, handleShowModal } = useContext(ModalTasks);
@@ -18,10 +19,11 @@ export default function TaskReminder() {
           receiveTask.map((ele) => {
             return (
               <TaskElement
+                key={uuidv4()}
                 title={ele.Task.Project.name}
                 Tasks={ele.Task.name}
-                delegateFrom={ele.sender.firstName}
-                delegateTo={ele.receiver.firstName}
+                delegateFrom={ele.senderTaskOwner.firstName}
+                delegateTo={ele.receiverTaskOwner.firstName}
                 delegateDate={"2022-05-19"}
                 clientBrief={{
                   content:

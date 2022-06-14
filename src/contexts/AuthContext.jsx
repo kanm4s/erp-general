@@ -47,6 +47,9 @@ const AuthContextProvider = (props) => {
       socket.on("connection", () => {
         console.log("connected to server");
       });
+      socket.on("users", (users) => {
+        console.log(users);
+      });
     } catch (err) {
       console.log(err);
     }

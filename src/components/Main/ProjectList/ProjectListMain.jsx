@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { ProjectContext } from "../../../contexts/ProjectContext";
 import Pagination from "../../utils/Pagination";
 import ProjectElement from "./ProjectElement";
+import { v4 as uuidv4 } from "uuid";
 
 export default function ProjectListMain() {
   const { project, loading } = useContext(ProjectContext);
@@ -75,7 +76,7 @@ export default function ProjectListMain() {
       {loading && <h2>loading ...</h2>}
       {currentProjects?.map((ele, idx) => (
         <ProjectElement
-          key={idx}
+          key={uuidv4()}
           id={ele.id}
           name={ele.name}
           clientName={ele.clientName}

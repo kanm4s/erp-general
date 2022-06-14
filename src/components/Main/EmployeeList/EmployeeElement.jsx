@@ -1,16 +1,22 @@
 import { motion } from "framer-motion";
-import { useContext, useState } from "react";
+import { useContext, useEffect } from "react";
 import { BiMessageSquareDots } from "react-icons/bi";
 import { useChat } from "../../../contexts/ChatContext";
 import { NavToggle } from "../../../contexts/NavContext";
+import socket from "../../../config/socket";
 
 export default function EmployeeElement(props) {
   const { id, firstName, lastName, position, phoneNumber, showDetailFunction } =
     props;
-  const { handleShowMessage, setShowMessage, setCheckSubMenuType } =
-    useContext(NavToggle);
+  const { handleShowMessage } = useContext(NavToggle);
 
-  const { setReceiver } = useChat();
+  const { setReceiver, room, joinRoom } = useChat();
+
+  // useEffect(() => {
+  //   socket.on("response_join_root", (res) => {
+  //     console.log(res);
+  //   });
+  // }, []);
 
   return (
     <motion.div
@@ -31,8 +37,11 @@ export default function EmployeeElement(props) {
         <span className="flex text-zinc-400 justify-end items-center z-10 py-[8px]">
           <div
             className="p-1 hover:bg-slate-300 hover:text-slate-50 dark:hover:text-gray-700 transition-all rounded"
-            onClick={() => {
+            onClick={async () => {
               setReceiver({ id, firstName });
+              await joinRoom(id);
+              console.log(room);
+              socket.emit("join_room", room);
               handleShowMessage("Message");
             }}
           >

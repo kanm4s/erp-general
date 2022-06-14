@@ -1,16 +1,14 @@
 import TaskListMain from "./TaskList/TaskListMain";
 import { motion } from "framer-motion";
-import { AuthContext } from "../../contexts/AuthContext";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getAllTasksApi, getTasksByProjectIdApi } from "../../api/project";
 import { useNavigate, useParams } from "react-router-dom";
 
 export default function TasksPage() {
   const { projectId } = useParams();
-  const { user } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
   const [tasks, setTasks] = useState([]);
-  const [taskOwner, setTaskOwner] = useState([]);
+  const [taskOwner] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {

@@ -1,6 +1,7 @@
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 import ModelTask from "../../Modal/ModelTask";
+import { v4 as uuidv4 } from "uuid";
 
 export default function TaskElement(props) {
   const {
@@ -24,12 +25,13 @@ export default function TaskElement(props) {
     if (calDate <= 2) {
       setUrgent(true);
     }
-  }, []);
+  }, [calDate]);
 
   return (
     <>
       {showModal && (
         <ModelTask
+          key={uuidv4()}
           title={title}
           delegateFrom={delegateFrom}
           delegateTo={delegateTo}

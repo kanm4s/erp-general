@@ -71,3 +71,10 @@ export function getTasksByProjectIdApi(projectId) {
 export function delegateTaskApi(receiverId, taskId) {
   return axios.post("/projects/tasks/delegate", { receiverId, taskId });
 }
+
+export function getAvailableTasksApi() {
+  return axios.get("projects/tasks/getAvailableTasks");
+}
+export function getAllWorkingTasksApi() {
+  return axios.get("projects/getAllWorkingTasks");
+}

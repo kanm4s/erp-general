@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { HiOutlineFilter } from "react-icons/hi";
 import { IoIosArrowDown } from "react-icons/io";
 import dayjs from "dayjs";
+import { v4 as uuidv4 } from "uuid";
 
 import TaskElement from "./TaskElement";
 import TaskDetail from "./TaskDetail";
@@ -96,22 +97,22 @@ export default function TaskListMain(props) {
             .map((ele, idx) => (
               <div>
                 <TaskElement
-                  key={idx}
+                  key={uuidv4()}
                   id={ele.Task.id}
                   name={ele.Task.name}
                   type={ele.Task.type}
-                  delegateTo={ele.receiver?.firstName}
+                  delegateTo={ele.receiverTaskOwner?.firstName}
                   deadLine={ele.Task.deadLine}
                   showDetailFunction={handleShowDetail}
                   projectId={projectId}
                 />
                 <TaskDetail
-                  key={idx}
+                  key={uuidv4()}
                   id={ele.Task.id}
                   user={user}
                   title={ele.Task.name}
                   delegateFrom={ele.delegateFrom}
-                  delegateTo={ele.receiver?.firstName}
+                  delegateTo={ele.receiverTaskOwner?.firstName}
                   delegateDate={dayjs(ele.updatedAt).format("YYYY-MM-DD")}
                   deadLine={ele.Task.deadLine}
                   brief={ele.Task.brief}
@@ -121,11 +122,11 @@ export default function TaskListMain(props) {
             ))
         : currentTasks?.map((ele, idx) => (
             <TaskElement
-              key={idx}
+              key={uuidv4()}
               id={ele.Task.id}
               name={ele.Task.name}
               type={ele.Task.type}
-              delegateTo={ele.receiver?.firstName}
+              delegateTo={ele.receiverTaskOwner?.firstName}
               deadLine={ele.Task.deadLine}
               showDetailFunction={handleShowDetail}
               projectId={projectId}
@@ -138,7 +139,7 @@ export default function TaskListMain(props) {
       <div className="flex justify-between items-center p-1 mt-2 mr-1">
         {user.position === "Manager" && (
           <div
-            className="p-1 hover:bg-slate-300 text-slate-50 hover:text-slate-50 dark:hover:text-gray-700 transition-all rounded cursor-pointer"
+            className="p-1 hover:bg-slate-300 text-slate-500 hover:text-slate-50 dark:hover:text-gray-700 transition-all rounded cursor-pointer"
             onClick={() => navigate(`/Projects/${projectId}/createTask`)}
           >
             <IoCreateOutline className="text-lg" />
