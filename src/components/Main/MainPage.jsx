@@ -6,6 +6,7 @@ import ProjectOverview from "./ProjectOverview/ProjectOverview";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useContext } from "react";
 import ProjectProgressManager from "./ProjectProgress/ProjectProgressManager";
+import { BsFillArrowDownCircleFill } from "react-icons/bs";
 
 export default function MainPage() {
   const { user } = useContext(AuthContext);
@@ -35,6 +36,9 @@ export default function MainPage() {
           {/* <TaskReminder />
           <ProjectProgress /> */}
         </ModalTaskContext>
+      </div>
+      <div className="flex flex-col relative bottom-[130px] justify-center items-center w-full px-16 2xl:px-20 text-[30px] text-main-color dark:text-gray-300">
+        {user.position === "Manager" ? <BsFillArrowDownCircleFill /> : <></>}
       </div>
     </motion.main>
   );

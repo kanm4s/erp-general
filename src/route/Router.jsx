@@ -21,6 +21,7 @@ export default function Router() {
           <Route path="/" element={<Home />}>
             <Route path="Home" element={<MainPage />} />
             <Route path="Projects" element={<ProjectPage />} />
+            <Route path="test" element={<ProjectPage />} />
             <Route path="Projects/create" element={<ProjectCreate />} />
             <Route
               path="Projects/edit/:projectId"

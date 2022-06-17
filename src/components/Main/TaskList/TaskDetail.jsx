@@ -132,7 +132,13 @@ export default function TaskDetail(props) {
               {/* <span>Brief version: {brief?.version}</span> */}
               <span className="col-span-2 dark:text-gray-100">{brief}</span>
             </div>
-            <p className="h-full">{brief?.content}</p>
+            <p className="">{brief?.content}</p>
+            {user.position === "Manager" && (
+              <>
+                <p className="text-main-color font-bold">{`Note from: ${delegateTo}`}</p>
+                <p className="dark:text-gray-100">{specialNote}</p>
+              </>
+            )}
           </div>
         </motion.div>
       )}

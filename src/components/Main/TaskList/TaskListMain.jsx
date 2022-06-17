@@ -23,6 +23,7 @@ export default function TaskListMain(props) {
   const [currentPage, setCurrentPage] = useState(1);
   const [tasksPerPage] = useState(9);
   const [showDetail, setShowDetail] = useState("");
+  const [showFilter, setShowFilter] = useState(false);
 
   const indexOfLastTask = currentPage * tasksPerPage;
   const indexOfFirstTask = indexOfLastTask - tasksPerPage;
@@ -54,7 +55,6 @@ export default function TaskListMain(props) {
       setShowDetail("");
     }
   };
-  console.log(currentTasks);
 
   return (
     <div className="w-full h-fit min-w-[800px] max-w-[1000px] px-7 py-5 rounded-lg shadow-2xl bg-white dark:bg-gray-700 overflow-hidden">
@@ -80,9 +80,17 @@ export default function TaskListMain(props) {
           </span>
         </div>
         <span className="flex text-zinc-400 justify-end py-[8px] 2xl:py-[18px]">
-          <div className="p-1 hover:bg-slate-300 hover:text-slate-50 dark:hover:text-gray-700  transition-all rounded">
+          <div
+            className="p-1 hover:bg-slate-300 hover:text-slate-50 dark:hover:text-gray-700  transition-all rounded"
+            onClick={() => setShowFilter(!showFilter)}
+          >
             <HiOutlineFilter className="cursor-pointer" />
           </div>
+          {showFilter && (
+            <div className="relative">
+              <div className="absolute w-28 h-48 right-7 z-10 rounded bg-neutral-100 dark:bg-gray-800 border-2"></div>
+            </div>
+          )}
         </span>
       </div>
 

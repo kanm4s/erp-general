@@ -79,6 +79,7 @@ export default function Signup({ animate, setSignUpPage }) {
         <h1 className="text-main-color header">Sign in to ERP</h1>
         <Input
           name="First name"
+          type="text"
           value={firstName}
           onChange={(e) => {
             setFirstName(e.target.value);
@@ -87,6 +88,7 @@ export default function Signup({ animate, setSignUpPage }) {
         />
         <Input
           name="Last name"
+          type="text"
           value={lastName}
           onChange={(e) => {
             setLastName(e.target.value);
@@ -95,6 +97,7 @@ export default function Signup({ animate, setSignUpPage }) {
         />
         <Input
           name="Username"
+          type="text"
           value={userName}
           onChange={(e) => {
             setUserName(e.target.value);
@@ -103,6 +106,7 @@ export default function Signup({ animate, setSignUpPage }) {
         />
         <Input
           name="Password"
+          type="password"
           value={password}
           onChange={(e) => {
             setPassword(e.target.value);
@@ -111,6 +115,7 @@ export default function Signup({ animate, setSignUpPage }) {
         />
         <Input
           name="Confirm-Password"
+          type="password"
           value={confirmPassword}
           onChange={(e) => {
             setConfirmPassword(e.target.value);
@@ -119,6 +124,7 @@ export default function Signup({ animate, setSignUpPage }) {
         />
         <Input
           name="Phone Number"
+          type="text"
           value={phoneNumber}
           onChange={(e) => {
             setPhoneNumber(e.target.value);
@@ -127,6 +133,7 @@ export default function Signup({ animate, setSignUpPage }) {
         />
         <Input
           name="Email"
+          type="text"
           value={email}
           onChange={(e) => {
             setEmail(e.target.value);

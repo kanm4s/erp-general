@@ -56,7 +56,7 @@ export default function TaskElement(props) {
               : `bg-main-color text-slate-100`
           }`}
         >
-          {`${calDate} days`}
+          {`${calDate + 1} days`}
         </div>
       </div>
     </>
